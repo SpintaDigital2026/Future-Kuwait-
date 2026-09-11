@@ -1,0 +1,252 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-wash: var(--brand-wash);
+  --color-hairline: var(--hairline);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-soft: 0 1px 2px rgb(2 27 71 / 0.04), 0 12px 40px -12px rgb(2 27 71 / 0.12);
+  --shadow-elevated: 0 24px 60px -24px rgb(2 27 71 / 0.25);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --ink: #0A1A33;
+  --ink-soft: #4A5970;
+  --brand: #1853F2;
+  --brand-deep: #0B2E8A;
+  --brand-tint: #6A8BFF;
+  --brand-wash: #EEF3FF;
+  --hairline: #E4EAF3;
+
+  --background: #FFFFFF;
+  --foreground: var(--ink);
+  --card: #FFFFFF;
+  --card-foreground: var(--ink);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--brand-wash);
+  --secondary-foreground: var(--brand-deep);
+  --muted: #F5F7FB;
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--brand-wash);
+  --accent-foreground: var(--brand-deep);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #FFFFFF;
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--brand);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Auto scroll-reveal for section-level blocks.
+     Driven entirely by CSS. Routes hydrate lazily, so anything that adds a
+     class or attribute to a server-rendered section before React hydrates it
+     is reported as a hydration mismatch — leaving the DOM untouched is what
+     makes this safe. Browsers without scroll-driven animations simply render
+     the content in its final position. Opt a subtree out with
+     data-motion-skip. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      main[data-page]
+        :is(section, [data-reveal]):not(
+          [data-motion-skip],
+          [data-motion-skip] *
+        ) {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 18%;
+      }
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      transform: translateY(28px);
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+/* Approved deep-purple theme, shared by the main home page and /v2. */
+.theme-v2 {
+  --ink: #171022;
+  --ink-soft: #655B72;
+  --brand: #7C3AED;
+  --brand-deep: #4C1D95;
+  --brand-tint: #C4B5FD;
+  --brand-wash: #F4F0FF;
+  --hairline: #E8E0F2;
+
+  --background: #FFFFFF;
+  --foreground: var(--ink);
+  --card: #FFFFFF;
+  --card-foreground: var(--ink);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: #FFFFFF;
+
+  --secondary: var(--brand-wash);
+  --secondary-foreground: var(--ink);
+  --muted: #F8F6FC;
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--brand-wash);
+  --accent-foreground: var(--brand-deep);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--brand);
+
+  background-color: var(--background);
+  color: var(--ink);
+}
+.theme-v2 :where(section, header, footer, main, div) {
+  color: inherit;
+}
+
+/* Deep near-black purple surfaces preserve strong contrast for white copy. */
+.theme-v2 .bg-ink,
+.theme-v2 .bg-ink\/95,
+.theme-v2 .bg-ink\/85 {
+  background-color: #160D24 !important;
+  color: #FFFFFF !important;
+}
+.theme-v2 [class*="bg-ink"] .text-white\/40,
+.theme-v2 [class*="bg-ink"] .text-white\/50,
+.theme-v2 [class*="bg-ink"] .text-white\/60,
+.theme-v2 [class*="bg-ink"] .text-white\/70,
+.theme-v2 [class*="bg-ink"] .text-white\/75,
+.theme-v2 [class*="bg-ink"] .text-white\/80 {
+  color: rgba(255,255,255,0.9) !important;
+}
+/* Any text-white sitting on a light surface (no bg-ink/bg-brand ancestor)
+   would be invisible — force it to ink so it stays readable. */
+.theme-v2 .text-white,
+.theme-v2 .text-white\/70,
+.theme-v2 .text-white\/60,
+.theme-v2 .text-white\/50 {
+  color: var(--ink);
+}
+/* But keep white text when the ancestor really is a dark/brand surface. */
+.theme-v2 [class*="bg-ink"] .text-white,
+.theme-v2 [class*="bg-brand"] .text-white,
+.theme-v2 .bg-brand .text-white,
+.theme-v2 .bg-brand-deep .text-white {
+  color: #FFFFFF !important;
+}
+/* Buttons and badges often carry their background and text classes on the
+   same element, so descendant-only contrast rules do not cover them. */
+.theme-v2 .bg-brand.text-white,
+.theme-v2 .bg-brand-deep.text-white,
+.theme-v2 .bg-primary.text-white,
+.theme-v2 .bg-primary.text-primary-foreground,
+.theme-v2 .bg-brand.text-brand-tint,
+.theme-v2 .bg-brand-deep.text-brand-tint,
+.theme-v2 .hover\:bg-brand-deep.text-white:hover,
+.theme-v2 .hover\:bg-brand-deep.text-brand-tint:hover,
+.theme-v2 .hover\:bg-brand-deep.text-primary-foreground:hover {
+  color: #FFFFFF !important;
+}
+.theme-v2 .bg-brand-wash.text-brand,
+.theme-v2 .bg-brand-wash .text-brand {
+  color: var(--brand-deep) !important;
+}
+.theme-v2 [class*="bg-ink"] .text-brand-tint,
+.theme-v2 [class*="bg-brand"] .text-brand-tint,
+.theme-v2 .bg-brand .text-brand-tint,
+.theme-v2 .bg-brand-deep .text-brand-tint {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 18px rgba(255,255,255,0.28);
+}
+
+/* Sections that darken an image with an ink gradient (e.g. the closing CTA)
+   keep white copy. The gradient is a sibling overlay, so a marker class is used. */
+/* White copy positioned absolutely sits over imagery/gradient overlays —
+   keep it white even without a bg-ink ancestor. */
+.theme-v2 .absolute.text-white,
+.theme-v2 .absolute.text-white\/80,
+.theme-v2 .absolute.text-white\/70,
+.theme-v2 .absolute.text-white\/60 {
+  color: #FFFFFF !important;
+}
+.theme-v2 .cta-dark-panel .text-white,
+.theme-v2 .cta-dark-panel .text-white\/75,
+.theme-v2 .cta-dark-panel .text-white\/70,
+.theme-v2 .cta-dark-panel .text-white\/60,
+.theme-v2 .cta-dark-panel .text-brand-tint {
+  color: #FFFFFF !important;
+}
+/* The gradient overlay itself must stay dark in the purple theme. */
+.theme-v2 .from-ink\/95 { --tw-gradient-from: rgb(22 13 36 / 0.95) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
+.theme-v2 .via-ink\/80 { --tw-gradient-via: rgb(22 13 36 / 0.8) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
+.theme-v2 .to-ink\/40 { --tw-gradient-to: rgb(22 13 36 / 0.4) !important; }
+
+/* Pale purple panels and controls. */
+.theme-v2 .bg-brand-wash {
+  background-color: var(--brand-wash) !important;
+}
+/* Hairlines */
+.theme-v2 .border-border,
+.theme-v2 .border-hairline {
+  border-color: var(--hairline) !important;
+}
+
+
