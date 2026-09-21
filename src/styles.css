@@ -249,4 +249,23 @@
   border-color: var(--hairline) !important;
 }
 
+/* Swipeable row for tight mobile sections (lead-magnet page previews, etc.). */
+.h-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 0.25rem;
+}
+.h-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.h-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--brand) 45%, transparent);
+  border-radius: 999px;
+}
+
 

@@ -22,4 +22,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Hostinger (VPS or Node.js hPanel) needs a Node process, not Cloudflare Workers.
+  nitro: {
+    preset: "node-server",
+  },
 });

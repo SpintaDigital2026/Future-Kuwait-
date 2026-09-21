@@ -1,170 +1,152 @@
-# Hostinger Deployment & Project Export Guide
+# Hostinger deployment
 
-**Project:** Future Kuwait website  
-**Stack:** TanStack Start, React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui  
-**Backend:** Lovable Cloud (Supabase) — auth, database, storage, CMS content  
-**Current published URL:** https://futurekuwait.sashfutureworks.com
+This is a **TanStack Start (Node.js SSR)** app. It cannot run as a WordPress site or as a folder of HTML files. The CMS/auth/files stay on **Supabase**; Hostinger only runs the website process.
 
----
+**Do not use Hostinger Shared / Web Hosting / WordPress.** Use one of:
 
-## 1. What your team needs to know about the stack
-
-This is a **modern full-stack React application**, not a WordPress/static HTML site. It requires:
-
-- **Node.js runtime** for server-side rendering (SSR) and server functions
-- **A server/hosting environment that supports TanStack Start / Vite SSR**, OR
-- **Cloudflare Workers** (the current default edge runtime)
-
-The database, authentication, file storage, and CMS content stay on the existing Lovable Cloud backend. Only the frontend application code moves to Hostinger.
+| Plan | How you run the app |
+|---|---|
+| **Hostinger Node.js** (hPanel “Websites → Node.js”) | Recommended if your plan includes it |
+| **VPS / Cloud** with Ubuntu | Use PM2 + Nginx |
 
 ---
 
-## 2. Recommended Hostinger hosting options
+## What you need before starting
 
-### Option A: Hostinger Cloud Hosting or VPS (recommended)
-
-Best fit for a TanStack Start app with SSR.
-
-**Why:** You get a Linux server with full control to install Node.js, run the production build, and serve the app with a process manager like PM2.
-
-**Suggested plan:** Cloud Startup or higher, or a VPS with at least 2 vCPU / 4 GB RAM / 50 GB SSD.
-
-### Option B: Hostinger Shared Hosting
-
-**Not recommended.** Shared hosting is built for PHP/WordPress/static sites. Running a Node.js SSR app on shared hosting is unreliable and usually unsupported.
-
-### Option C: Stay on Lovable + connect a custom domain
-
-If the goal is simply to use a Hostinger-registered domain, the easiest path is to keep hosting on Lovable and point the domain's DNS records to Lovable. This avoids moving the app.
-
----
-
-## 3. Project export steps
-
-### Step 1: Download the project files
-
-From the Lovable editor:
-
-1. Open the project.
-2. Go to **Settings** or the project menu (top-left / sidebar).
-3. Look for **Export project**, **Download source**, or **Git repository** options.
-4. Download the ZIP, or connect/push to a Git repository (GitHub/GitLab) that your team can clone.
-
-**What to export:**
-
-- All source files (`src/`, `public/`, `package.json`, `vite.config.ts`, `tsconfig.json`, etc.)
-- `.env` file (contains public Supabase keys only — safe to share, but do not expose service-role keys)
-
-**Important:** Do not share `SUPABASE_SERVICE_ROLE_KEY` or any admin credentials. These should stay private and be set as environment variables on the server only.
-
-### Step 2: Confirm environment variables
-
-The project already has a `.env` file with these public values:
+- A Hostinger **Node.js** or **VPS** plan (not shared PHP)
+- Domain DNS you can change (A record → Hostinger IP)
+- SSH access (VPS) or hPanel Node.js app (Node hosting)
+- These values (already in your local `.env`; copy them onto the server):
 
 ```env
+NODE_ENV=production
+SUPABASE_PROJECT_ID=zsjhwghrhiiqftqygzlt
+SUPABASE_URL=https://zsjhwghrhiiqftqygzlt.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_kI3w8-6Hn9NKI_IGZQ8_GA_dyQXoIY0
+VITE_SUPABASE_PROJECT_ID=zsjhwghrhiiqftqygzlt
 VITE_SUPABASE_URL=https://zsjhwghrhiiqftqygzlt.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_kI3w8-6Hn9NKI_IGZQ8_GA_dyQXoIY0
-VITE_SUPABASE_PROJECT_ID=zsjhwghrhiiqftqygzlt
 ```
 
-On the Hostinger server, set these as environment variables. Do not hard-code secrets into the source code.
+Optional, **server-only**, never put in Git:
 
-If your team needs a service-role key for server-side admin tasks, it must be obtained from the Lovable Cloud/backend admin panel and kept secret.
+```env
+SUPABASE_SERVICE_ROLE_KEY=   # only needed to create admin users from the app
+```
 
----
+Get the service-role key from the [Supabase dashboard](https://supabase.com/dashboard) → Project Settings → API. It bypasses database security.
 
-## 4. Hostinger deployment checklist
-
-### Server setup
-
-- [ ] Provision Hostinger Cloud Hosting or VPS with Ubuntu/Debian
-- [ ] Install Node.js LTS (v20 or later recommended)
-- [ ] Install a process manager: `pm2` or `systemd`
-- [ ] Install a reverse proxy: `nginx` or use Hostinger's built-in tools
-- [ ] Configure firewall to allow HTTP (80) and HTTPS (443)
-
-### Application build
-
-- [ ] Clone or upload the project files to the server
-- [ ] Run `npm install` or `bun install` (the project uses `bun` by default)
-- [ ] Run the production build command (check `package.json` scripts; likely `npm run build` or `bun run build`)
-- [ ] Verify the build output folder (commonly `dist/` or `.output/`)
-
-### Runtime & environment
-
-- [ ] Set environment variables on the server:
-  - `VITE_SUPABASE_URL`
-  - `VITE_SUPABASE_PUBLISHABLE_KEY`
-  - `VITE_SUPABASE_PROJECT_ID`
-  - `NODE_ENV=production`
-  - Any additional secrets your team adds
-- [ ] Start the app with the process manager
-- [ ] Confirm the app is running on localhost/port (default usually `http://localhost:3000` or `8080`)
-
-### Domain & SSL
-
-- [ ] Point the Hostinger domain's DNS A record to the server IP
-- [ ] Configure Nginx reverse proxy to forward domain traffic to the app port
-- [ ] Install SSL certificate (Let's Encrypt via Hostinger or Certbot)
-- [ ] Force HTTPS redirect
-
-### Post-deployment verification
-
-- [ ] Homepage loads at the custom domain
-- [ ] Navigation and internal links work
-- [ ] CMS-managed pages (blogs, case studies, events, white papers, glossary) load
-- [ ] Admin sign-in at `/auth` works
-- [ ] Image uploads and PDF downloads work
-- [ ] Contact/CTA forms or mailto links work
-- [ ] Mobile responsiveness checked
-- [ ] Social media header links open correctly
-
-### Auth/callback update (if needed)
-
-- [ ] If the domain changes, update any OAuth redirect URIs in the backend/auth provider settings
-- [ ] Update the site URL in the backend project settings to the new domain
+`VITE_*` values are baked in at **build** time. If you change them, you must rebuild.
 
 ---
 
-## 5. Important caveats
+## Path A — Hostinger Node.js (hPanel)
 
-1. **Edge runtime vs. VPS:** The current app is configured for a serverless/edge runtime. Moving to a traditional VPS may require small config changes in `vite.config.ts` or the server entry. Your AI engineer should review the TanStack Start deployment docs for the target environment.
+1. In hPanel open **Websites → Node.js** (or **Website list → your domain → Node.js**).
+2. Create an application:
+   - **Application type:** `nitro`
+   - **Node version:** 20 or 22
+   - **Build script:** `build`
+   - **Output directory:** `.output`
+   - **Entry file:** `server/index.mjs`
+3. Connect the GitHub repo `SpintaDigital2026/Future-Kuwait-` (branch `main`), or upload the project (include `package.json`, `src/`, `public/`, **not** `node_modules`).
+4. Paste the env vars above into the Node.js app environment.
+5. Deploy / Rebuild. Hostinger will run `npm install` then `npm run build` and start `.output/server/index.mjs`.
+6. Point the domain at this app and enable SSL in hPanel.
 
-2. **Database and CMS stay put:** Do not migrate the database to Hostinger. The app connects to the existing Lovable Cloud backend. Moving the database would require a separate migration project.
-
-3. **Do not expose service-role keys:** The service-role key bypasses all security. It must only exist as a server environment variable, never in the frontend code or Git history.
-
-4. **Build before deploying:** This app requires a build step. You cannot simply upload the `src/` folder and expect it to run.
-
-5. **Keep Lovable as a backup:** Until Hostinger is fully tested and live, keep the Lovable published site running. You can switch the domain DNS when ready.
+If hPanel has no “nitro” type, pick **Custom / Node.js** and set:
+- Start command: `node .output/server/index.mjs`
+- Port: use Hostinger’s `PORT` (the app already reads `PORT`).
 
 ---
 
-## 6. Quick reference: useful commands
+## Path B — Hostinger VPS
+
+SSH in as root (or a sudo user). Replace `/var/www/future-kuwait` and `example.com`.
 
 ```bash
-# Install dependencies
-bun install
+# 1. Node.js 22
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs git nginx
+sudo npm i -g pm2
 
-# Build for production
-bun run build
+# 2. App files
+sudo mkdir -p /var/www/future-kuwait
+sudo chown "$USER":"$USER" /var/www/future-kuwait
+cd /var/www/future-kuwait
+git clone https://github.com/SpintaDigital2026/Future-Kuwait- .
+cp .env.example .env
+nano .env   # paste the values listed above
 
-# Start production server (check package.json for exact script)
-bun run start
-
-# Or with Node
-npm install
+# 3. Build
+npm ci
 npm run build
-npm run start
+
+# 4. Process manager (keeps the site up after reboot)
+pm2 start ecosystem.config.cjs
+pm2 save
+pm2 startup
+
+# 5. Nginx + HTTPS
+sudo cp deploy/nginx.conf.example /etc/nginx/sites-available/future-kuwait
+sudo nano /etc/nginx/sites-available/future-kuwait   # replace example.com
+sudo ln -s /etc/nginx/sites-available/future-kuwait /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+sudo apt-get install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+Later updates:
+
+```bash
+cd /var/www/future-kuwait
+git pull
+npm ci
+npm run build
+pm2 restart future-kuwait
 ```
 
 ---
 
-## 7. Next steps
+## After the site is live
 
-1. **Confirm the Hostinger plan** your team wants to use (Cloud/VPS recommended).
-2. **Export the project** from Lovable (download ZIP or push to Git).
-3. **Share this document** with your web team / AI engineer.
-4. **Keep the Lovable Cloud backend active** — the new Hostinger frontend will continue using it.
+Do these in the [Supabase dashboard](https://supabase.com/dashboard) for project `zsjhwghrhiiqftqygzlt`:
 
-If your team hits specific errors during build or deployment, share the exact error message and we can troubleshoot further.
+1. **Authentication → URL configuration**
+   - Site URL = `https://your-domain.com`
+   - Redirect URLs include `https://your-domain.com/**` and `https://your-domain.com/admin`
+2. **Storage → `resources` bucket**
+   - If uploads from `/admin` fail, add the new domain to CORS allowed origins.
+3. Sign in at `https://your-domain.com/auth` and confirm `/admin` and `/resources/blogs`.
+
+---
+
+## What this repo already does for Hostinger
+
+- Production Nitro preset is **`node-server`** (not Cloudflare Workers).
+- `npm run build` writes `.output/`
+- `npm start` runs `node .output/server/index.mjs`
+- Site images live in `public/__l5e/` and are copied into the build
+- `ecosystem.config.cjs` and `deploy/nginx.conf.example` are for Path B
+
+---
+
+## Checks after deploy
+
+- [ ] Homepage loads over HTTPS
+- [ ] Images (logo, heroes, solution cards) load
+- [ ] `/resources/blogs`, case studies, events, glossary, white papers load (empty is OK if CMS has no rows)
+- [ ] `/auth` sign-in works
+- [ ] Admin image/PDF upload works (needs the `resources` bucket)
+
+---
+
+## If something fails
+
+| Symptom | Likely cause |
+|---|---|
+| Site is a Hostinger “coming soon” or PHP page | Wrong plan / document root; this app is not `public_html` HTML |
+| Build succeeds, start crashes | Missing `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` on the **server** |
+| Pages load, images 404 | `public/` was not uploaded / build did not include `public/__l5e` |
+| Admin cannot create users | Missing `SUPABASE_SERVICE_ROLE_KEY` |
+| Login redirects to old domain | Supabase Site URL / Redirect URLs not updated |

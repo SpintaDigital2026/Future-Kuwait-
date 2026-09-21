@@ -23,9 +23,9 @@ export function LeadMagnet({
 }: Props) {
   const mailSubject = encodeURIComponent(subject ?? `Lead magnet request: ${asset}`);
   return (
-    <section className="bg-background py-20 lg:py-14 border-y border-hairline">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="relative overflow-hidden rounded-3xl bg-ink text-white p-8 md:p-12 lg:p-14 ring-1 ring-white/10">
+    <section className="bg-background py-16 lg:py-14 border-y border-hairline">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="relative overflow-hidden rounded-3xl bg-ink text-white p-5 sm:p-8 md:p-12 lg:p-14 ring-1 ring-white/10">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-32 -right-20 h-[420px] w-[420px] rounded-full opacity-50"
@@ -35,18 +35,18 @@ export function LeadMagnet({
               filter: "blur(20px)",
             }}
           />
-          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="relative grid min-w-0 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <div className="min-w-0 lg:col-span-7">
               <div className="flex items-center gap-3 mb-5">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
                   {eyebrow}
                 </span>
-                <span className="h-px w-10 bg-brand-tint/40" />
+                <span className="h-px w-10 shrink-0 bg-brand-tint/40" />
               </div>
-              <h3 className="font-sans text-3xl md:text-4xl tracking-tight leading-[1.1]">
+              <h3 className="font-sans text-[1.65rem] sm:text-3xl md:text-4xl tracking-tight leading-[1.15] break-words text-balance">
                 {title}
               </h3>
-              <p className="mt-5 text-white/70 leading-relaxed max-w-xl">
+              <p className="mt-5 text-white/70 leading-relaxed max-w-xl break-words">
                 {description}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -61,9 +61,9 @@ export function LeadMagnet({
                 </a>
               </div>
             </div>
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur">
-                <div className="flex items-start gap-4">
+            <div className="min-w-0 lg:col-span-5">
+              <div className="relative min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 backdrop-blur">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="size-12 shrink-0 rounded-xl bg-brand/20 grid place-items-center text-brand-tint text-xl">
                     📄
                   </div>
@@ -71,7 +71,9 @@ export function LeadMagnet({
                     <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                       Resource · {format}
                     </div>
-                    <div className="font-sans text-lg text-white mt-1 truncate">{asset}</div>
+                    <div className="font-sans text-base sm:text-lg text-white mt-1 break-words">
+                      {asset}
+                    </div>
                     <div className="text-xs text-white/50 mt-1">{pages} · Free download</div>
                   </div>
                 </div>
@@ -83,11 +85,14 @@ export function LeadMagnet({
                     loading="lazy"
                   />
                 ) : (
-                  <div className="mt-6 grid grid-cols-3 gap-2">
+                  <div
+                    className="h-scroll mt-6"
+                    aria-label="Guide page previews"
+                  >
                     {[0, 1, 2].map((i) => (
                       <div
                         key={i}
-                        className="aspect-[3/4] rounded-md border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02]"
+                        className="aspect-[3/4] w-[42%] min-w-[8rem] max-w-[11rem] shrink-0 snap-start rounded-md border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02]"
                       />
                     ))}
                   </div>
