@@ -5,6 +5,7 @@ import { CalendarDays, CheckCircle2, MessageSquareText, Phone } from "lucide-rea
 import heroAsset from "@/assets/client-2026/contact-speak-to-an-expert.jpg.asset.json";
 import futureLogo from "@/assets/future-logo.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
+import { SocialIcons } from "@/components/SocialIcons";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -619,6 +620,9 @@ function Footer() {
               Future Communications Company — engineering intelligent digital transformation for
               modern enterprises across the UK.
             </p>
+            <div className="mt-6">
+              <SocialIcons />
+            </div>
           </div>
           <div>
             <h4 className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink mb-4">Solutions</h4>

@@ -8,6 +8,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { SectionCta } from "@/components/SectionCta";
 import { ApproachInfographic } from "@/components/ApproachInfographic";
+import { SocialIcons } from "@/components/SocialIcons";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -657,6 +658,9 @@ function Footer() {
               Future Communications Company — engineering intelligent digital transformation for
               modern enterprises across the UK.
             </p>
+            <div className="mt-6">
+              <SocialIcons />
+            </div>
           </div>
           <div>
             <h4 className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink mb-4">

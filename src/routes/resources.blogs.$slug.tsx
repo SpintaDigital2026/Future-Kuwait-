@@ -58,7 +58,7 @@ function DetailPage() {
       </header>
 
       {data.cover_url && (
-        <img src={data.cover_url} alt={data.cover_image_alt ?? data.title} className="mt-8 aspect-[16/9] w-full rounded-xl object-cover" />
+        <img src={data.cover_url} alt={data.cover_image_alt || data.title} className="mt-8 aspect-[16/9] w-full rounded-xl object-cover" />
       )}
 
       {data.body_html && (

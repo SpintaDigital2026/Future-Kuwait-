@@ -45,9 +45,9 @@ function CaseStudiesPage() {
               className="group overflow-hidden rounded-xl border bg-background transition hover:shadow-md"
             >
               {cs.cover_url ? (
-                <img src={cs.cover_url} alt={cs.cover_image_alt ?? cs.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
+                <img src={cs.cover_url} alt={cs.cover_image_alt || cs.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
               ) : (
-                <img src={caseStudyAsset.url} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" />
+                <img src={caseStudyAsset.url} alt="FCC transformation case studies" className="aspect-[16/9] w-full object-cover" loading="lazy" />
               )}
               <div className="p-5">
                 {cs.client_name && <p className="text-xs uppercase tracking-wide text-ink-soft">{cs.client_name}</p>}

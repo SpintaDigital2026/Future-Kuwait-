@@ -45,9 +45,9 @@ function BlogsPage() {
               className="group overflow-hidden rounded-xl border bg-background transition hover:shadow-md"
             >
               {b.cover_url ? (
-                <img src={b.cover_url} alt={b.cover_image_alt ?? b.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
+                <img src={b.cover_url} alt={b.cover_image_alt || b.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
               ) : (
-                <img src={blogsAsset.url} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" />
+                <img src={blogsAsset.url} alt="Technology insights and thought leadership" className="aspect-[16/9] w-full object-cover" loading="lazy" />
               )}
               <div className="p-5">
                 {b.category && <p className="text-xs uppercase tracking-wide text-ink-soft">{b.category}</p>}

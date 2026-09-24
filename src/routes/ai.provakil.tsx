@@ -246,7 +246,7 @@ function Hero() {
             <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
+                className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert <span aria-hidden>→</span>
               </a>
@@ -479,7 +479,7 @@ function CTA() {
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
           >
             Speak to an Expert <span aria-hidden>→</span>
           </a>

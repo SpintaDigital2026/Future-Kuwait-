@@ -35,9 +35,10 @@ export function SectionCta({
           <div className="flex flex-wrap gap-3 shrink-0">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-primary-foreground whitespace-nowrap hover:bg-brand-deep transition-colors"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
             >
               Speak to an Expert
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="/resources/case-studies"

@@ -7,7 +7,12 @@ import { adminExists, bootstrapFirstAdmin } from "@/lib/case-studies.functions";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Sign in — FCC Admin" }] }),
+  head: () => ({
+    meta: [
+      { title: "Sign in — FCC Admin" },
+      { name: "description", content: "Sign in to the Future Communications Company admin area to manage enquiries, case studies, and resources." },
+    ],
+  }),
   component: AuthPage,
 });
 

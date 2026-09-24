@@ -46,9 +46,9 @@ function WhitePapersPage() {
               className="group flex flex-col overflow-hidden rounded-xl border bg-background transition hover:shadow-md"
             >
               {wp.cover_url ? (
-                <img src={wp.cover_url} alt={wp.cover_image_alt ?? wp.title} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                <img src={wp.cover_url} alt={wp.cover_image_alt || wp.title} className="aspect-[4/3] w-full object-cover" loading="lazy" />
               ) : (
-                <img src={whitePapersAsset.url} alt="" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                <img src={whitePapersAsset.url} alt="Technology research and strategic guides" className="aspect-[4/3] w-full object-cover" loading="lazy" />
               )}
               <div className="flex flex-1 flex-col p-5">
                 {wp.category && <p className="text-xs uppercase tracking-wide text-ink-soft">{wp.category}</p>}

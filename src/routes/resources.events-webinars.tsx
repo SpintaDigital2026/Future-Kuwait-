@@ -80,9 +80,9 @@ function Section({ title, items, loading, emptyMsg }: { title: string; items: It
             className="group flex flex-col overflow-hidden rounded-xl border bg-background transition hover:shadow-md"
           >
             {e.cover_url ? (
-              <img src={e.cover_url} alt={e.cover_image_alt ?? e.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
+              <img src={e.cover_url} alt={e.cover_image_alt || e.title} className="aspect-[16/9] w-full object-cover" loading="lazy" />
             ) : (
-              <img src={eventsAsset.url} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" />
+              <img src={eventsAsset.url} alt="FCC events and webinars" className="aspect-[16/9] w-full object-cover" loading="lazy" />
             )}
             <div className="flex flex-1 flex-col p-5">
               <p className="text-xs uppercase tracking-wide text-primary">{e.event_type}</p>

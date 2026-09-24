@@ -20,6 +20,7 @@ import { LeadMagnet } from "@/components/LeadMagnet";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 import { SectionCta } from "@/components/SectionCta";
 import { ApproachInfographic } from "@/components/ApproachInfographic";
+import { SocialIcons } from "@/components/SocialIcons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -711,6 +712,9 @@ function Footer() {
               Future Communications Company — engineering intelligent digital transformation for
               modern enterprises across the UK.
             </p>
+            <div className="mt-6">
+              <SocialIcons />
+            </div>
           </div>
           <div>
             <h4 className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink mb-4">

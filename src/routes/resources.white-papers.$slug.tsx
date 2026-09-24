@@ -87,7 +87,7 @@ function DetailPage() {
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="overflow-hidden rounded-xl border bg-background">
             {data.cover_url ? (
-              <img src={data.cover_url} alt={data.cover_image_alt ?? data.title} className="aspect-[4/3] w-full object-cover" />
+              <img src={data.cover_url} alt={data.cover_image_alt || data.title} className="aspect-[4/3] w-full object-cover" />
             ) : (
               <div className="flex aspect-[4/3] w-full items-center justify-center bg-gradient-to-br from-muted to-muted/40">
                 <FileText className="h-14 w-14 text-muted-foreground/40" />

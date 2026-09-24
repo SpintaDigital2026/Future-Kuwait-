@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import futureLogo from "@/assets/future-logo.png.asset.json";
+import { SocialIcons } from "@/components/SocialIcons";
 
 const SOLUTION_LINKS = [
   { to: "/microsoft/azure", label: "Microsoft" },
@@ -20,6 +21,9 @@ export function SiteFooter() {
             Future Communications Company — engineering intelligent digital transformation for
             modern enterprises across the UK.
           </p>
+          <div className="mt-6">
+            <SocialIcons tone="dark" />
+          </div>
         </div>
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-3">
