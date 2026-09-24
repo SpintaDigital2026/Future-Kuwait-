@@ -7,10 +7,10 @@ import blogsAsset from "@/assets/client-2026/blogs.jpg.asset.json";
 export const Route = createFileRoute("/resources/blogs")({
   head: () => ({
     meta: [
-      { title: "Blogs — Future Kuwait" },
-      { name: "description", content: "Insights, updates and thought leadership from the Future Kuwait team." },
-      { property: "og:title", content: "Blogs — Future Kuwait" },
-      { property: "og:description", content: "Insights, updates and thought leadership from the Future Kuwait team." },
+      { title: "Blogs — FCC" },
+      { name: "description", content: "Insights, updates and thought leadership from the FCC team." },
+      { property: "og:title", content: "Blogs — FCC" },
+      { property: "og:description", content: "Insights, updates and thought leadership from the FCC team." },
     ],
   }),
   component: BlogsPage,

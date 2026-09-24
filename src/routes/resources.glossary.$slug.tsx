@@ -9,7 +9,7 @@ export const Route = createFileRoute("/resources/glossary/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
-    const title = loaderData.meta_title || `${loaderData.term} | Glossary | Future Kuwait`;
+    const title = loaderData.meta_title || `${loaderData.term} | Glossary | FCC`;
     const description = loaderData.meta_description || loaderData.short_definition;
     return {
       meta: [

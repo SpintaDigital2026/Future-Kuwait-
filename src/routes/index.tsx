@@ -19,6 +19,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 import { SectionCta } from "@/components/SectionCta";
+import { ApproachInfographic } from "@/components/ApproachInfographic";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -29,13 +30,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Future Communications Company (FCC) delivers enterprise Microsoft, cybersecurity, customer experience, and AI solutions across the UK and GCC.",
+          "Future Communications Company (FCC) delivers enterprise Microsoft, cybersecurity, customer experience, and AI solutions across the UK.",
       },
       { property: "og:title", content: "FCC — Engineering Intelligent Digital Transformation" },
       {
         property: "og:description",
         content:
-          "Microsoft cloud, managed cybersecurity, customer experience, and AI for modern enterprises across the UK and GCC.",
+          "Microsoft cloud, managed cybersecurity, customer experience, and AI for modern enterprises across the UK.",
       },
       { property: "og:image", content: heroImg },
     ],
@@ -101,7 +102,7 @@ const SOLUTIONS = [
 const WHY = [
   { t: "Enterprise Expertise", d: "Deep expertise across Microsoft, cybersecurity, customer engagement, and AI." },
   { t: "End-to-End Delivery", d: "Consulting, architecture, deployment, optimisation and managed services." },
-  { t: "UK & GCC Reach", d: "Localized implementation and support tailored to regional requirements." },
+  { t: "UK Reach", d: "Localized implementation and support tailored to regional requirements." },
   { t: "Strategic Partnerships", d: "Microsoft, Google, ThreatDown, Barracuda, and XEBO.ai." },
   { t: "Scalable Managed Services", d: "Managed IT security, cloud support, and enterprise optimisation." },
   { t: "Outcome-Driven", d: "Measurable improvements in resilience, efficiency, and growth." },
@@ -151,7 +152,7 @@ const FAQ = [
   },
   {
     q: "Which industries does FCC support?",
-    a: "Retail, finance, telecom, healthcare, and enterprise organisations across the UK and GCC.",
+    a: "Retail, finance, telecom, healthcare, and enterprise organisations across the UK.",
   },
 ];
 
@@ -179,7 +180,7 @@ function CtaBand({
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href="mailto:hello@fcc.com"
+              href="/contact"
               className={`group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium whitespace-nowrap transition-colors ${isDark ? "bg-white text-ink hover:bg-brand-wash" : "bg-brand text-white hover:bg-brand-deep shadow-soft"}`}
             >
               Speak to an Expert
@@ -207,7 +208,7 @@ function Home() {
       <About />
       <CtaBand
         headline="See how we deliver results"
-        body="Discover how organisations across the UK and GCC modernise with FCC."
+        body="Discover how organisations across the UK modernise with FCC."
       />
       <Solutions />
       <WhyFCC />
@@ -291,7 +292,7 @@ function Hero() {
               className="mt-10 flex flex-wrap items-center gap-3"
             >
               <a
-                href="#cta"
+                href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert
@@ -306,8 +307,8 @@ function Hero() {
             </motion.div>
             <StaggerGroup className="mt-14 grid grid-cols-3 gap-6 max-w-lg">
               {[
-                ["20+", "Years experience"],
-                ["2", "Regions: UK & GCC"],
+                ["30+", "Years experience"],
+                ["UK", "Nationwide reach"],
                 ["100%", "Outcome-driven"],
               ].map(([n, l]) => (
                 <StaggerItem key={l} className="border-l-2 border-brand-tint pl-4">
@@ -372,7 +373,7 @@ function TrustStrip() {
     <section className="border-y border-brand/10 bg-brand-wash text-ink">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand whitespace-nowrap">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-brand whitespace-nowrap">
             Enterprise technology · Built for growth
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-ink/80">
@@ -402,8 +403,8 @@ function About() {
     <section id="about" className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-            About / 01
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            About
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Driving transformation through{" "}
@@ -418,9 +419,9 @@ function About() {
             enterprise environments.
           </p>
           <ul className="mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-4">
-            {cap.map((c, i) => (
+            {cap.map((c) => (
               <li key={c} className="flex items-baseline gap-3 text-ink">
-                <span className="font-mono text-[10px] text-brand">0{i + 1}</span>
+                <span className="text-brand">—</span>
                 <span className="text-base">{c}</span>
               </li>
             ))}
@@ -437,8 +438,8 @@ function Solutions() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="max-w-2xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-              Solutions / 02
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+              Solutions
             </span>
             <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Four ecosystems. <span className="italic text-brand">One partner.</span>
@@ -468,7 +469,7 @@ function Solutions() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
                 <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/80">
-                  Solution / {s.n}
+                  Solution
                 </div>
                 <h3 className="absolute bottom-4 left-5 right-5 font-sans text-2xl md:text-3xl text-white">
                   {s.title}
@@ -497,17 +498,16 @@ function WhyFCC() {
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="mb-16 max-w-3xl">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-          Why FCC / 03
+        <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+          Why FCC
         </span>
         <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
           Why organisations <span className="italic text-brand">choose us</span>.
         </h2>
       </div>
       <StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline rounded-2xl overflow-hidden">
-        {WHY.map((w, i) => (
+        {WHY.map((w) => (
           <StaggerItem key={w.t} className="bg-background p-8 min-h-[200px] hover:bg-brand-wash/40 transition-colors">
-            <div className="font-mono text-[10px] text-brand mb-6">0{i + 1} / 0{WHY.length}</div>
             <h3 className="font-sans text-xl mb-3">{w.t}</h3>
             <p className="text-sm text-ink-soft leading-relaxed">{w.d}</p>
           </StaggerItem>
@@ -531,8 +531,8 @@ function Industries() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
-            Industries / 04
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
+            Industries
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight text-white">
             Built for the industries{" "}
@@ -540,12 +540,11 @@ function Industries() {
           </h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {INDUSTRIES.map((ind, i) => (
+          {INDUSTRIES.map((ind) => (
             <div
               key={ind.t}
               className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 hover:bg-white/[0.07] transition-colors"
             >
-              <div className="font-mono text-[10px] text-brand-tint mb-4">0{i + 1}</div>
               <h3 className="font-sans text-xl mb-3 text-white">{ind.t}</h3>
               <p className="text-sm text-white/60 leading-relaxed">{ind.d}</p>
             </div>
@@ -560,25 +559,15 @@ function Approach() {
   return (
     <section id="approach" className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="mb-16 max-w-3xl">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-          Approach / 05
+        <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+          Approach
         </span>
         <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
           A proven path from{" "}
           <span className="italic text-brand">discovery to optimisation</span>.
         </h2>
       </div>
-      <StaggerGroup className="relative border-l border-hairline ml-3 space-y-10">
-        {APPROACH.map((a, i) => (
-          <StaggerItem key={a.t} as="li" className="pl-8 relative block">
-            <span className="absolute -left-[14px] top-1 size-7 rounded-full bg-brand text-primary-foreground font-mono text-[11px] font-semibold grid place-items-center ring-4 ring-background">
-              {i + 1}
-            </span>
-            <h3 className="font-sans text-2xl">{a.t}</h3>
-            <p className="mt-2 text-ink-soft max-w-2xl">{a.d}</p>
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
+      <ApproachInfographic steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
     </section>
   );
 }
@@ -589,21 +578,21 @@ function Outcomes() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-              Outcomes / 06
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+              Outcomes
             </span>
             <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Measurable <span className="italic text-brand">business impact</span>.
             </h2>
           </div>
           <StaggerGroup className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {OUTCOMES.map((o, i) => (
+            {OUTCOMES.map((o) => (
               <StaggerItem
                 key={o}
                 as="li"
                 className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline hover:border-brand/40 hover:-translate-y-0.5 transition-all"
               >
-                <span className="font-mono text-[10px] text-brand mt-1">0{i + 1}</span>
+                <span className="text-brand mt-1">—</span>
                 <span className="text-ink font-medium">{o}</span>
               </StaggerItem>
             ))}
@@ -629,7 +618,7 @@ function CTA() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/40" />
           <div className="relative px-8 md:px-16 py-12 md:py-16 max-w-3xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
               Partner with FCC
             </span>
             <h2 className="mt-6 font-sans text-4xl md:text-5xl text-white leading-[1.05] tracking-tight">
@@ -642,7 +631,7 @@ function CTA() {
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="mailto:hello@fcc.com"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
               >
                 Speak to an Expert
@@ -668,8 +657,8 @@ function Faq() {
     <section id="faq" className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-            FAQ / 07
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            FAQ
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Frequently asked <span className="italic text-brand">questions</span>.
@@ -720,7 +709,7 @@ function Footer() {
             </div>
             <p className="mt-6 text-ink-soft max-w-md leading-relaxed">
               Future Communications Company — engineering intelligent digital transformation for
-              modern enterprises across the UK and GCC.
+              modern enterprises across the UK.
             </p>
           </div>
           <div>
@@ -742,7 +731,7 @@ function Footer() {
               <li><Link to="/about" className="hover:text-ink transition-colors">About</Link></li>
               <li><a href="#industries" className="hover:text-ink transition-colors">Industries</a></li>
               <li><a href="#approach" className="hover:text-ink transition-colors">Approach</a></li>
-              <li><a href="mailto:hello@fcc.com" className="hover:text-ink transition-colors">Contact</a></li>
+              <li><a href="/contact" className="hover:text-ink transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -751,7 +740,7 @@ function Footer() {
             © {new Date().getFullYear()} Future Communications Company. All rights reserved.
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-soft">
-            UK · GCC
+            United Kingdom
           </p>
         </div>
       </div>

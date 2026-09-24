@@ -167,6 +167,45 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_enquiries: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          kind: string
+          message: string
+          name: string
+          preferred_date: string | null
+          preferred_time: string | null
+          topic: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          kind: string
+          message: string
+          name: string
+          preferred_date?: string | null
+          preferred_time?: string | null
+          topic?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          kind?: string
+          message?: string
+          name?: string
+          preferred_date?: string | null
+          preferred_time?: string | null
+          topic?: string | null
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           author_id: string | null
@@ -424,6 +463,13 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      list_booked_contact_slots: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          preferred_date: string
+          preferred_time: string
+        }[]
       }
     }
     Enums: {

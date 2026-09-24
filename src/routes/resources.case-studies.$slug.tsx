@@ -9,8 +9,8 @@ export const Route = createFileRoute("/resources/case-studies/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
-    const title = loaderData.meta_title || `${loaderData.title} — Case Study | Future Kuwait`;
-    const description = loaderData.meta_description || loaderData.summary || "Case study by Future Kuwait.";
+    const title = loaderData.meta_title || `${loaderData.title} — Case Study | FCC`;
+    const description = loaderData.meta_description || loaderData.summary || "Case study by FCC.";
     const og = loaderData.cover_url ?? undefined;
     return {
       meta: [

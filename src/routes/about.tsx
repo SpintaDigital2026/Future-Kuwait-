@@ -7,6 +7,7 @@ import futureLogo from "@/assets/future-logo.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { SectionCta } from "@/components/SectionCta";
+import { ApproachInfographic } from "@/components/ApproachInfographic";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "Discover FCC's mission, vision, and expertise in Microsoft cloud, cybersecurity, CX, and AI for enterprises across the UK and GCC.",
+          "Discover FCC's mission, vision, and expertise in Microsoft cloud, cybersecurity, CX, and AI for enterprises across the UK.",
       },
     ],
   }),
@@ -103,7 +104,7 @@ const WHAT_WE_DO = [
 const WHY = [
   { t: "Enterprise Technology Expertise", d: "Deep expertise across Microsoft ecosystems, cybersecurity frameworks, AI technologies, and customer engagement platforms." },
   { t: "End-to-End Delivery", d: "From consulting and architecture to deployment, monitoring, and optimisation." },
-  { t: "UK & GCC Delivery Expertise", d: "Localized implementation and managed support services tailored to regional enterprise environments." },
+  { t: "UK Delivery Expertise", d: "Localized implementation and managed support services tailored to regional enterprise environments." },
   { t: "Strategic Technology Partnerships", d: "Partnerships with global technology leaders including Microsoft, Google, ThreatDown, Barracuda, and XEBO.ai." },
   { t: "Long-Term Partnership Approach", d: "FCC focuses on building scalable technology ecosystems designed to evolve with your business." },
 ];
@@ -153,7 +154,7 @@ const FAQ = [
   },
   {
     q: "Which industries does FCC support?",
-    a: "FCC supports organisations across retail, financial services, healthcare, telecom, and enterprise sectors throughout the UK and GCC.",
+    a: "FCC supports organisations across retail, financial services, healthcare, telecom, and enterprise sectors throughout the UK.",
   },
 ];
 
@@ -208,7 +209,7 @@ function Hero() {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+              <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
                 About FCC
               </span>
               <span className="h-px w-10 bg-brand-tint/40" />
@@ -227,7 +228,7 @@ function Hero() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="/#cta"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert
@@ -273,8 +274,8 @@ function WhoWeAre() {
     <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-            Who We Are / 01
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            Who We Are
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Driving digital transformation{" "}
@@ -304,7 +305,7 @@ function WhoWeAre() {
             strengthen security, and enhance customer experiences across modern business environments.
           </p>
           <div className="mt-10">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand mb-4 block">
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand mb-4 block">
               Our expertise spans
             </span>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
@@ -328,7 +329,7 @@ function MissionVision() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
               Our Mission
             </span>
             <h2 className="mt-6 font-sans text-3xl md:text-4xl leading-[1.05] tracking-tight">
@@ -345,7 +346,7 @@ function MissionVision() {
             </p>
           </div>
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
               Our Vision
             </span>
             <h2 className="mt-6 font-sans text-3xl md:text-4xl leading-[1.05] tracking-tight">
@@ -368,8 +369,8 @@ function WhatWeDo() {
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="mb-16 max-w-3xl">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-          What We Do / 02
+        <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+          What We Do
         </span>
         <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
           Enterprise technology solutions{" "}
@@ -401,7 +402,7 @@ function WhatWeDo() {
             </ul>
             {s.capabilities.length > 0 && (
               <div className="mt-6 pt-6 border-t border-hairline">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand mb-3 block">
+                <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand mb-3 block">
                   Key Capabilities
                 </span>
                 <ul className="grid gap-2">
@@ -431,8 +432,8 @@ function ApproachSection() {
     <section className="bg-muted/50 border-y border-hairline">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-            Our Approach / 03
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            Our Approach
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Strategic, scalable, and{" "}
@@ -443,17 +444,7 @@ function ApproachSection() {
             scalable digital transformation frameworks aligned with operational and growth objectives.
           </p>
         </div>
-        <ol className="relative border-l border-hairline ml-3 space-y-10">
-          {APPROACH.map((a, i) => (
-            <li key={a.t} className="pl-8 relative">
-              <span className="absolute -left-[14px] top-1 size-7 rounded-full bg-brand text-white font-mono text-[11px] grid place-items-center ring-4 ring-background">
-                {i + 1}
-              </span>
-              <h3 className="font-sans text-2xl">{a.t}</h3>
-              <p className="mt-2 text-ink-soft max-w-2xl">{a.d}</p>
-            </li>
-          ))}
-        </ol>
+        <ApproachInfographic steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
       </div>
     </section>
   );
@@ -463,8 +454,8 @@ function WhyFCC() {
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="mb-16 max-w-3xl">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-          Why FCC / 04
+        <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+          Why FCC
         </span>
         <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
           Why organisations{" "}
@@ -480,8 +471,7 @@ function WhyFCC() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline rounded-2xl overflow-hidden">
         {WHY.map((w, i) => (
           <div key={w.t} className="bg-background p-8 min-h-[200px] hover:bg-brand-wash/40 transition-colors">
-            <div className="font-mono text-[10px] text-brand mb-6">0{i + 1} / 0{WHY.length}</div>
-            <h3 className="font-sans text-xl mb-3">{w.t}</h3>
+            <h3 className="font-sans text-2xl mb-3">{w.t}</h3>
             <p className="text-sm text-ink-soft leading-relaxed">{w.d}</p>
           </div>
         ))}
@@ -504,8 +494,8 @@ function Industries() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
-            Industries / 05
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
+            Industries
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight text-white">
             Technology solutions across{" "}
@@ -518,8 +508,7 @@ function Industries() {
               key={ind.t}
               className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 hover:bg-white/[0.07] transition-colors"
             >
-              <div className="font-mono text-[10px] text-brand-tint mb-4">0{i + 1}</div>
-              <h3 className="font-sans text-xl mb-3 text-white">{ind.t}</h3>
+              <h3 className="font-sans text-2xl mb-3 text-white">{ind.t}</h3>
               <p className="text-sm text-white/60 leading-relaxed">{ind.d}</p>
             </div>
           ))}
@@ -535,8 +524,8 @@ function Outcomes() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-14">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-              Business Outcomes / 06
+            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+              Business Outcomes
             </span>
             <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Delivering{" "}
@@ -552,7 +541,7 @@ function Outcomes() {
                 key={o}
                 className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline"
               >
-                <span className="font-mono text-[10px] text-brand mt-1">0{i + 1}</span>
+                <span className="text-brand mt-1">—</span>
                 <span className="text-ink font-medium">{o}</span>
               </li>
             ))}
@@ -577,7 +566,7 @@ function CTA() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-14">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
             Start Your Transformation
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl text-white leading-[1.05] tracking-tight">
@@ -589,14 +578,14 @@ function CTA() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
-              href="mailto:hello@fcc.com"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors whitespace-nowrap"
             >
               Speak to an Expert
               <span aria-hidden>→</span>
             </a>
             <a
-              href="/#cta"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               Contact Our Team
@@ -614,8 +603,8 @@ function Faq() {
     <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
-            FAQ / 07
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            FAQ
           </span>
           <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Frequently asked <span className="italic text-brand">questions</span>.
@@ -666,7 +655,7 @@ function Footer() {
             </div>
             <p className="mt-6 text-ink-soft max-w-md leading-relaxed">
               Future Communications Company — engineering intelligent digital transformation for
-              modern enterprises across the UK and GCC.
+              modern enterprises across the UK.
             </p>
           </div>
           <div>
@@ -674,10 +663,10 @@ function Footer() {
               Solutions
             </h4>
             <ul className="space-y-2 text-sm text-ink-soft">
-              <li>Microsoft</li>
-              <li>Cyber Security</li>
-              <li>Customer Experience</li>
-              <li>AI & Automation</li>
+              <li><Link to="/microsoft/azure" className="hover:text-ink transition-colors">Microsoft</Link></li>
+              <li><Link to="/cybersecurity/barracuda" className="hover:text-ink transition-colors">Cyber Security</Link></li>
+              <li><Link to="/customer-experience/xebo" className="hover:text-ink transition-colors">Customer Experience</Link></li>
+              <li><Link to="/ai/dune-dynamics" className="hover:text-ink transition-colors">AI & Automation</Link></li>
             </ul>
           </div>
           <div>
@@ -686,9 +675,9 @@ function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-ink-soft">
               <li><Link to="/about" className="hover:text-ink transition-colors">About</Link></li>
-              <li>Industries</li>
-              <li>Approach</li>
-              <li>Contact</li>
+              <li><a href="/#industries" className="hover:text-ink transition-colors">Industries</a></li>
+              <li><a href="/#approach" className="hover:text-ink transition-colors">Approach</a></li>
+              <li><a href="/contact" className="hover:text-ink transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -697,7 +686,7 @@ function Footer() {
             © {new Date().getFullYear()} Future Communications Company. All rights reserved.
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-soft">
-            UK · GCC
+            United Kingdom
           </p>
         </div>
       </div>

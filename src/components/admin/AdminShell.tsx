@@ -1,5 +1,5 @@
 import { Link, Outlet, useRouter } from "@tanstack/react-router";
-import { LayoutDashboard, FileText, LogOut, BookOpen, Newspaper, CalendarDays, FileDown, BookA, Users } from "lucide-react";
+import { LayoutDashboard, FileText, LogOut, BookOpen, Newspaper, CalendarDays, FileDown, BookA, Users, Inbox } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -24,6 +24,7 @@ export function AdminShell() {
         </div>
         <nav className="flex-1 space-y-0.5 p-3 text-sm">
           <NavItem to="/admin" icon={LayoutDashboard} label="Dashboard" exact />
+          <NavItem to="/admin/enquiries" icon={Inbox} label="Enquiries" />
           <NavItem to="/admin/case-studies" icon={FileText} label="Case Studies" />
           <NavItem to="/admin/blogs" icon={Newspaper} label="Blogs" />
           <NavItem to="/admin/events" icon={CalendarDays} label="Events & Webinars" />
@@ -40,7 +41,7 @@ export function AdminShell() {
       <main className="flex-1">
         <header className="border-b bg-background px-4 py-3 lg:px-8">
           <div className="flex items-center justify-between">
-            <h1 className="text-sm font-medium text-muted-foreground">Future Kuwait CMS</h1>
+            <h1 className="text-sm font-medium text-muted-foreground">FCC CMS</h1>
             <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">View site →</Link>
           </div>
         </header>

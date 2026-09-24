@@ -34,7 +34,7 @@ export function SectionCta({
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
             <a
-              href="#cta"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-primary-foreground whitespace-nowrap hover:bg-brand-deep transition-colors"
             >
               Speak to an Expert

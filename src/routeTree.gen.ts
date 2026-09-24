@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as V2RouteImport } from './routes/v2'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -44,6 +45,7 @@ import { Route as AuthenticatedAdminWhitePapersRouteImport } from './routes/_aut
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminGlossaryRouteImport } from './routes/_authenticated/admin.glossary'
 import { Route as AuthenticatedAdminEventsRouteImport } from './routes/_authenticated/admin.events'
+import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
 import { Route as AuthenticatedAdminCaseStudiesRouteImport } from './routes/_authenticated/admin.case-studies'
 import { Route as AuthenticatedAdminBlogsRouteImport } from './routes/_authenticated/admin.blogs'
 import { Route as AuthenticatedAdminWhitePapersNewRouteImport } from './routes/_authenticated/admin.white-papers.new'
@@ -60,6 +62,11 @@ import { Route as AuthenticatedAdminBlogsIdRouteImport } from './routes/_authent
 const V2Route = V2RouteImport.update({
   id: '/v2',
   path: '/v2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -240,6 +247,12 @@ const AuthenticatedAdminEventsRoute =
     path: '/events',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminEnquiriesRoute =
+  AuthenticatedAdminEnquiriesRouteImport.update({
+    id: '/enquiries',
+    path: '/enquiries',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminCaseStudiesRoute =
   AuthenticatedAdminCaseStudiesRouteImport.update({
     id: '/case-studies',
@@ -316,6 +329,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/v2': typeof V2Route
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/ai/dune-dynamics': typeof AiDuneDynamicsRoute
@@ -339,6 +353,7 @@ export interface FileRoutesByFullPath {
   '/resources/white-papers': typeof ResourcesWhitePapersRouteWithChildren
   '/admin/blogs': typeof AuthenticatedAdminBlogsRouteWithChildren
   '/admin/case-studies': typeof AuthenticatedAdminCaseStudiesRouteWithChildren
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin/events': typeof AuthenticatedAdminEventsRouteWithChildren
   '/admin/glossary': typeof AuthenticatedAdminGlossaryRouteWithChildren
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -364,6 +379,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/v2': typeof V2Route
   '/ai/dune-dynamics': typeof AiDuneDynamicsRoute
   '/ai/provakil': typeof AiProvakilRoute
@@ -386,6 +402,7 @@ export interface FileRoutesByTo {
   '/resources/white-papers': typeof ResourcesWhitePapersRouteWithChildren
   '/admin/blogs': typeof AuthenticatedAdminBlogsRouteWithChildren
   '/admin/case-studies': typeof AuthenticatedAdminCaseStudiesRouteWithChildren
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin/events': typeof AuthenticatedAdminEventsRouteWithChildren
   '/admin/glossary': typeof AuthenticatedAdminGlossaryRouteWithChildren
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -413,6 +430,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/v2': typeof V2Route
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/ai/dune-dynamics': typeof AiDuneDynamicsRoute
@@ -436,6 +454,7 @@ export interface FileRoutesById {
   '/resources/white-papers': typeof ResourcesWhitePapersRouteWithChildren
   '/_authenticated/admin/blogs': typeof AuthenticatedAdminBlogsRouteWithChildren
   '/_authenticated/admin/case-studies': typeof AuthenticatedAdminCaseStudiesRouteWithChildren
+  '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/_authenticated/admin/events': typeof AuthenticatedAdminEventsRouteWithChildren
   '/_authenticated/admin/glossary': typeof AuthenticatedAdminGlossaryRouteWithChildren
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -463,6 +482,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/contact'
     | '/v2'
     | '/admin'
     | '/ai/dune-dynamics'
@@ -486,6 +506,7 @@ export interface FileRouteTypes {
     | '/resources/white-papers'
     | '/admin/blogs'
     | '/admin/case-studies'
+    | '/admin/enquiries'
     | '/admin/events'
     | '/admin/glossary'
     | '/admin/users'
@@ -511,6 +532,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/contact'
     | '/v2'
     | '/ai/dune-dynamics'
     | '/ai/provakil'
@@ -533,6 +555,7 @@ export interface FileRouteTypes {
     | '/resources/white-papers'
     | '/admin/blogs'
     | '/admin/case-studies'
+    | '/admin/enquiries'
     | '/admin/events'
     | '/admin/glossary'
     | '/admin/users'
@@ -559,6 +582,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/auth'
+    | '/contact'
     | '/v2'
     | '/_authenticated/admin'
     | '/ai/dune-dynamics'
@@ -582,6 +606,7 @@ export interface FileRouteTypes {
     | '/resources/white-papers'
     | '/_authenticated/admin/blogs'
     | '/_authenticated/admin/case-studies'
+    | '/_authenticated/admin/enquiries'
     | '/_authenticated/admin/events'
     | '/_authenticated/admin/glossary'
     | '/_authenticated/admin/users'
@@ -609,6 +634,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
   V2Route: typeof V2Route
   AiDuneDynamicsRoute: typeof AiDuneDynamicsRoute
   AiProvakilRoute: typeof AiProvakilRoute
@@ -638,6 +664,13 @@ declare module '@tanstack/react-router' {
       path: '/v2'
       fullPath: '/v2'
       preLoaderRoute: typeof V2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -878,6 +911,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminEventsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/enquiries': {
+      id: '/_authenticated/admin/enquiries'
+      path: '/enquiries'
+      fullPath: '/admin/enquiries'
+      preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/case-studies': {
       id: '/_authenticated/admin/case-studies'
       path: '/case-studies'
@@ -1050,6 +1090,7 @@ const AuthenticatedAdminWhitePapersRouteWithChildren =
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminBlogsRoute: typeof AuthenticatedAdminBlogsRouteWithChildren
   AuthenticatedAdminCaseStudiesRoute: typeof AuthenticatedAdminCaseStudiesRouteWithChildren
+  AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
   AuthenticatedAdminEventsRoute: typeof AuthenticatedAdminEventsRouteWithChildren
   AuthenticatedAdminGlossaryRoute: typeof AuthenticatedAdminGlossaryRouteWithChildren
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
@@ -1061,6 +1102,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminBlogsRoute: AuthenticatedAdminBlogsRouteWithChildren,
   AuthenticatedAdminCaseStudiesRoute:
     AuthenticatedAdminCaseStudiesRouteWithChildren,
+  AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
   AuthenticatedAdminEventsRoute: AuthenticatedAdminEventsRouteWithChildren,
   AuthenticatedAdminGlossaryRoute: AuthenticatedAdminGlossaryRouteWithChildren,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
@@ -1147,6 +1189,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
   V2Route: V2Route,
   AiDuneDynamicsRoute: AiDuneDynamicsRoute,
   AiProvakilRoute: AiProvakilRoute,

@@ -8,9 +8,9 @@ import whitePapersAsset from "@/assets/client-2026/white-papers.jpg.asset.json";
 export const Route = createFileRoute("/resources/white-papers")({
   head: () => ({
     meta: [
-      { title: "White Papers — Future Kuwait" },
+      { title: "White Papers — FCC" },
       { name: "description", content: "In-depth research and strategic guides on technology and transformation." },
-      { property: "og:title", content: "White Papers — Future Kuwait" },
+      { property: "og:title", content: "White Papers — FCC" },
       { property: "og:description", content: "In-depth research and strategic guides on technology and transformation." },
     ],
   }),

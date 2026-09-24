@@ -2,10 +2,11 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroAsset from "@/assets/client-2026/firecompass-attack-surface-management.jpg.asset.json";
 const heroImg = heroAsset.url;
-import futureLogo from "@/assets/future-logo.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { SectionCta } from "@/components/SectionCta";
+import { ApproachInfographic } from "@/components/ApproachInfographic";
 
 export const Route = createFileRoute("/cybersecurity/firecompass")({
   head: () => ({
@@ -14,13 +15,13 @@ export const Route = createFileRoute("/cybersecurity/firecompass")({
       {
         name: "description",
         content:
-          "FireCompass delivers enterprise-grade attack surface management and threat intelligence. FCC provides UK implementation, monitoring, and managed cybersecurity services across the UK and GCC.",
+          "FireCompass delivers enterprise-grade attack surface management and threat intelligence. FCC provides UK implementation, monitoring, and managed cybersecurity services across the UK.",
       },
       { property: "og:title", content: "FireCompass — Intelligent Attack Surface Management & Threat Intelligence Platform" },
       {
         property: "og:description",
         content:
-          "Strengthen cyber resilience with FireCompass threat intelligence, attack surface management, and continuous security testing — delivered by FCC across the UK and GCC.",
+          "Strengthen cyber resilience with FireCompass threat intelligence, attack surface management, and continuous security testing — delivered by FCC across the UK.",
       },
       { property: "og:image", content: heroImg },
     ],
@@ -195,7 +196,7 @@ const FAQS = [
   },
   {
     q: "Does FCC provide external attack surface management services?",
-    a: "Yes, FCC delivers enterprise-grade external attack surface management services, including FireCompass implementation, optimisation, and managed cybersecurity services across the UK and GCC.",
+    a: "Yes, FCC delivers enterprise-grade external attack surface management services, including FireCompass implementation, optimisation, and managed cybersecurity services across the UK.",
   },
   {
     q: "Can FireCompass identify exposed digital assets?",
@@ -233,7 +234,7 @@ function FireCompassPage() {
       <Outcomes />
       <CTA />
       <Faq />
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
@@ -263,7 +264,7 @@ function Hero() {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+              <span className="section-kicker text-brand-tint">
                 FireCompass · Cybersecurity
               </span>
               <span className="h-px w-10 bg-brand-tint/40" />
@@ -279,7 +280,7 @@ function Hero() {
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="mailto:hello@fcc.com"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
               >
                 Speak to an Expert <span aria-hidden>→</span>
@@ -316,7 +317,7 @@ function Overview() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+            <span className="section-kicker text-brand">
               Overview
             </span>
             <h2 className="mt-4 font-sans text-3xl md:text-4xl font-semibold tracking-tight text-ink leading-tight">
@@ -362,7 +363,7 @@ function Challenges() {
     <section className="bg-brand-wash py-20 lg:py-16 border-y border-ink/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+          <span className="section-kicker text-brand">
             Business Challenges
           </span>
           <span className="h-px w-10 bg-brand/40" />
@@ -392,7 +393,7 @@ function Approach() {
     <section className="bg-background py-20 lg:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+          <span className="section-kicker text-brand">
             FCC Approach
           </span>
           <span className="h-px w-10 bg-brand/40" />
@@ -401,24 +402,7 @@ function Approach() {
           A strategic approach to{" "}
           <span className="italic text-brand">threat intelligence & exposure management</span>.
         </h2>
-        <div className="mt-14 relative">
-          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-ink/10 hidden md:block" />
-          <ol className="space-y-10">
-            {APPROACH.map((step, i) => (
-              <li key={step.title} className="grid md:grid-cols-12 gap-6 items-start">
-                <div className="md:col-span-3 flex items-center gap-4">
-                  <div className="size-8 rounded-full bg-brand text-white grid place-items-center font-mono text-xs relative z-10">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <span className="font-sans text-lg text-ink">{step.title}</span>
-                </div>
-                <div className="md:col-span-9">
-                  <p className="text-ink-soft leading-relaxed">{step.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <ApproachInfographic className="mt-14" steps={APPROACH} />
       </div>
     </section>
   );
@@ -429,7 +413,7 @@ function Capabilities() {
     <section className="bg-brand-wash py-20 lg:py-16 border-y border-ink/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+          <span className="section-kicker text-brand">
             Core Capabilities
           </span>
           <span className="h-px w-10 bg-brand/40" />
@@ -479,7 +463,7 @@ function Industries() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-16">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+          <span className="section-kicker text-brand-tint">
             Industry Use Cases
           </span>
           <span className="h-px w-10 bg-brand-tint/40" />
@@ -510,7 +494,7 @@ function WhyFCC() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+            <span className="section-kicker text-brand">
               Why FCC
             </span>
             <h2 className="mt-4 font-sans text-3xl md:text-4xl font-semibold tracking-tight text-ink leading-tight">
@@ -543,7 +527,7 @@ function Outcomes() {
     <section className="bg-brand-wash py-20 lg:py-16 border-y border-ink/5">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+          <span className="section-kicker text-brand">
             Business Outcomes
           </span>
           <span className="h-px w-10 bg-brand/40" />
@@ -581,7 +565,7 @@ function CTA() {
         }}
       />
       <div className="relative mx-auto max-w-4xl px-6 lg:px-10 text-center">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+        <span className="section-kicker text-brand-tint">
           Improve Your Visibility
         </span>
         <h2 className="mt-5 font-sans text-3xl md:text-5xl font-semibold tracking-tight">
@@ -594,7 +578,7 @@ function CTA() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <a
-            href="mailto:hello@fcc.com"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
           >
             Speak to an Expert <span aria-hidden>→</span>
@@ -617,7 +601,7 @@ function Faq() {
     <section id="faq" className="bg-background py-20 lg:py-16">
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand">
+          <span className="section-kicker text-brand">
             FAQ
           </span>
           <span className="h-px w-10 bg-brand/40" />
@@ -653,58 +637,5 @@ function Faq() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-ink text-white/60 border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-12 grid md:grid-cols-3 gap-8 text-sm">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <img src={futureLogo.url} alt="Future" width={140} height={36} className="h-8 w-auto" />
-          </div>
-          <p className="mt-4 max-w-xs">
-            Engineering intelligent digital transformation for modern enterprises across the UK
-            and GCC.
-          </p>
-        </div>
-        <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-3">
-            Explore
-          </div>
-          <ul className="space-y-2">
-            <li><Link to="/" className="hover:text-white">Home</Link></li>
-            <li><Link to="/about" className="hover:text-white">About</Link></li>
-            <li><Link to="/customer-experience/xebo" className="hover:text-white">Xebo</Link></li>
-            <li><Link to="/customer-experience/view360" className="hover:text-white">View360</Link></li>
-            <li><Link to="/cybersecurity/threatdown" className="hover:text-white">ThreatDown</Link></li>
-            <li><Link to="/cybersecurity/barracuda" className="hover:text-white">Barracuda</Link></li>
-            <li><Link to="/cybersecurity/microsoft-security" className="hover:text-white">Microsoft Security</Link></li>
-            <li><Link to="/cybersecurity/firecompass" className="hover:text-white">FireCompass</Link></li>
-            <li><Link to="/ai/dune-dynamics" className="hover:text-white">Dune Dynamics</Link></li>
-            <li><Link to="/ai/provakil" className="hover:text-white">Provakil</Link></li>
-            <li><Link to="/microsoft/d365-fo" className="hover:text-white">D365 Finance & Operations</Link></li>
-            <li><Link to="/microsoft/d365-crm" className="hover:text-white">D365 CRM</Link></li>
-            <li><Link to="/microsoft/d365-bc" className="hover:text-white">D365 Business Central</Link></li>
-            <li><Link to="/microsoft/power-bi" className="hover:text-white">Power BI</Link></li>
-            <li><Link to="/microsoft/power-apps" className="hover:text-white">Power Apps</Link></li>
-            <li><Link to="/microsoft/azure" className="hover:text-white">Azure</Link></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-3">
-            Contact
-          </div>
-          <p>hello@fcc.example</p>
-          <p className="mt-1">United Kingdom · GCC</p>
-        </div>
-      </div>
-      <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 text-xs text-white/40">
-          © {new Date().getFullYear()} Future Communications Company. All rights reserved.
-        </div>
-      </div>
-    </footer>
   );
 }

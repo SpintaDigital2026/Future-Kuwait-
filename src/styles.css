@@ -249,6 +249,20 @@
   border-color: var(--hairline) !important;
 }
 
+/* Section labels — same size/case as the home page (About, Why FCC, etc.). */
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .section-kicker {
+    font-size: 1rem;
+  }
+}
+
 /* Swipeable row for tight mobile sections (lead-magnet page previews, etc.). */
 .h-scroll {
   display: flex;

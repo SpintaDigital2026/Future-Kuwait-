@@ -206,6 +206,12 @@ export function SiteNav() {
             >
               About
             </Link>
+            <Link
+              to="/contact"
+              className="text-sm font-medium text-ink-soft hover:text-primary transition-colors"
+            >
+              Contact
+            </Link>
             <MegaDropdown
               label="Customer Experience"
               items={[
@@ -474,6 +480,13 @@ export function SiteNav() {
                   onClick={() => setMobileOpen(false)}
                 >
                   About
+                </Link>
+                <Link
+                  to="/contact"
+                  className="block px-3 py-2 text-sm font-semibold text-ink hover:bg-muted"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Contact
                 </Link>
               </div>
               {mobileSections.map((section) => (

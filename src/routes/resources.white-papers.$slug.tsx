@@ -12,8 +12,8 @@ export const Route = createFileRoute("/resources/white-papers/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
-    const title = loaderData.meta_title || `${loaderData.title} | Future Kuwait`;
-    const description = loaderData.meta_description || loaderData.summary || "White paper by Future Kuwait.";
+    const title = loaderData.meta_title || `${loaderData.title} | FCC`;
+    const description = loaderData.meta_description || loaderData.summary || "White paper by FCC.";
     const og = loaderData.cover_url ?? undefined;
     return {
       meta: [

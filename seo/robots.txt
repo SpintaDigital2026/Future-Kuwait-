@@ -1,0 +1,12 @@
+
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /cgi-bin/
+Disallow: /?s=
+Disallow: /search/
+
+Sitemap: http://fcc-solutions.co.uk/sitemap.xml

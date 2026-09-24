@@ -134,7 +134,7 @@ export function EventEditor({ initial }: Props) {
             </Field>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Timezone" hint="IANA, e.g. Asia/Kuwait">
+            <Field label="Timezone" hint="IANA, e.g. Europe/London">
               <input value={form.timezone} onChange={(e) => setForm((f) => ({ ...f, timezone: e.target.value }))} className={input} />
             </Field>
             <Field label="Location" hint="Venue or 'Online'">

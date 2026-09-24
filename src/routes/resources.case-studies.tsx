@@ -7,10 +7,10 @@ import caseStudyAsset from "@/assets/client-2026/homepage-hero-02.jpg.asset.json
 export const Route = createFileRoute("/resources/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case Studies — Future Kuwait" },
-      { name: "description", content: "Explore how Future Kuwait has helped organisations transform with technology." },
-      { property: "og:title", content: "Case Studies — Future Kuwait" },
-      { property: "og:description", content: "Explore how Future Kuwait has helped organisations transform with technology." },
+      { title: "Case Studies — FCC" },
+      { name: "description", content: "Explore how FCC has helped organisations transform with technology." },
+      { property: "og:title", content: "Case Studies — FCC" },
+      { property: "og:description", content: "Explore how FCC has helped organisations transform with technology." },
     ],
   }),
   component: CaseStudiesPage,
@@ -25,7 +25,7 @@ function CaseStudiesPage() {
     <div className="mx-auto max-w-7xl px-4 py-14 lg:px-6">
       <header className="grid items-center gap-8 overflow-hidden rounded-2xl bg-brand-wash p-7 md:grid-cols-2 md:p-10">
         <div><h1 className="text-4xl font-bold tracking-tight">Case Studies</h1>
-        <p className="mt-4 text-lg text-ink-soft">Real outcomes from organisations across Kuwait — how we have helped them modernise, secure, and grow with technology.</p></div>
+        <p className="mt-4 text-lg text-ink-soft">Real outcomes from organisations — how we have helped them modernise, secure, and grow with technology.</p></div>
         <img src={caseStudyAsset.url} alt="FCC transformation case studies" className="aspect-[16/9] w-full rounded-xl object-cover" />
       </header>
 

@@ -7,7 +7,7 @@ import { adminExists, bootstrapFirstAdmin } from "@/lib/case-studies.functions";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Sign in — Future Kuwait Admin" }] }),
+  head: () => ({ meta: [{ title: "Sign in — FCC Admin" }] }),
   component: AuthPage,
 });
 

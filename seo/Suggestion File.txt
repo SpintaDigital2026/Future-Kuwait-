@@ -1,0 +1,5 @@
+Please host the sitemap file in the path: https://fcc-solutions.co.uk/sitemap.xml
+
+Please host the robots file in the path: https://fcc-solutions.co.uk/robots.txt
+
+ 

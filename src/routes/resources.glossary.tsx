@@ -9,9 +9,9 @@ import glossaryAsset from "@/assets/client-2026/glossary-01.jpg.asset.json";
 export const Route = createFileRoute("/resources/glossary")({
   head: () => ({
     meta: [
-      { title: "Glossary — Future Kuwait" },
+      { title: "Glossary — FCC" },
       { name: "description", content: "A quick reference for key terms and concepts across our solutions." },
-      { property: "og:title", content: "Glossary — Future Kuwait" },
+      { property: "og:title", content: "Glossary — FCC" },
       { property: "og:description", content: "A quick reference for key terms and concepts across our solutions." },
     ],
   }),

@@ -51,7 +51,7 @@ export function LeadMagnet({
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href={`mailto:hello@fcc.com?subject=${mailSubject}`}
+                  href={`mailto:inquiry@fcc-solutions.co.uk?subject=${mailSubject}`}
                   className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
                 >
                   {ctaLabel}

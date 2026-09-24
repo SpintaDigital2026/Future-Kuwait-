@@ -8,10 +8,10 @@ import eventsAsset from "@/assets/client-2026/events-webinars-01.jpg.asset.json"
 export const Route = createFileRoute("/resources/events-webinars")({
   head: () => ({
     meta: [
-      { title: "Events & Webinars — Future Kuwait" },
-      { name: "description", content: "Upcoming and on-demand events, webinars and roundtables from Future Kuwait." },
-      { property: "og:title", content: "Events & Webinars — Future Kuwait" },
-      { property: "og:description", content: "Upcoming and on-demand events, webinars and roundtables from Future Kuwait." },
+      { title: "Events & Webinars — FCC" },
+      { name: "description", content: "Upcoming and on-demand events, webinars and roundtables from FCC." },
+      { property: "og:title", content: "Events & Webinars — FCC" },
+      { property: "og:description", content: "Upcoming and on-demand events, webinars and roundtables from FCC." },
     ],
   }),
   component: EventsPage,
