@@ -542,7 +542,6 @@ function Outcomes() {
                 key={o}
                 className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline"
               >
-                <span className="text-brand mt-1">—</span>
                 <span className="text-ink font-medium">{o}</span>
               </li>
             ))}

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroAsset from "@/assets/client-2026/power-bi.jpg.asset.json";
-const heroImg = heroAsset.url;
+const heroImg = "/partners/power-bi/dashboard.png";
+const productLogo = "/partners/power-bi/logo.png?v=3";
+import { ProductLogo } from "@/components/ProductLogo";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LeadMagnet } from "@/components/LeadMagnet";
@@ -234,10 +235,7 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="section-kicker text-brand-tint">Power BI · Microsoft</span>
-              <span className="h-px w-10 bg-brand-tint/40" />
-            </div>
+            <ProductLogo src={productLogo} alt="Power BI" label="Microsoft" />
             <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
               Transform business data into <span className="italic text-brand-tint">actionable</span> intelligence with Microsoft Power BI.
             </h1>
@@ -262,7 +260,6 @@ function Hero() {
           <div className="lg:col-span-6">
             <div className="relative rounded-2xl overflow-hidden border border-white/10">
               <img src={heroImg} alt="Microsoft Power BI dashboards" width={1600} height={900} className="w-full h-auto" />
-              <div className="absolute inset-0 bg-ink/30" />
             </div>
           </div>
         </div>
@@ -452,7 +449,6 @@ function Outcomes() {
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {OUTCOMES.map((outcome) => (
             <div key={outcome} className="rounded-2xl bg-white border border-ink/10 p-7 flex items-start gap-4">
-              <span className="mt-1 size-2 rounded-full bg-brand shrink-0" />
               <span className="text-ink font-medium">{outcome}</span>
             </div>
           ))}

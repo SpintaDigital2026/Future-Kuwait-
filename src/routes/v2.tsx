@@ -590,7 +590,6 @@ function Outcomes() {
                 as="li"
                 className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline hover:border-brand/40 hover:-translate-y-0.5 transition-all"
               >
-                <span className="text-brand mt-1">—</span>
                 <span className="text-ink font-medium">{o}</span>
               </StaggerItem>
             ))}

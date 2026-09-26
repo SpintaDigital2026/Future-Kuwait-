@@ -20,7 +20,7 @@ export function ApproachInfographic({ steps, className = "" }: Props) {
     <ol className={`relative grid gap-5 ${gridClass(steps.length)} ${className}`.trim()}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-[8%] top-11 hidden h-px bg-gradient-to-r from-transparent via-brand/45 to-transparent xl:block"
+        className="pointer-events-none absolute inset-x-[8%] top-9 hidden h-px bg-gradient-to-r from-transparent via-brand/45 to-transparent xl:block"
       />
       {steps.map((step, i) => (
         <li key={step.title} className="relative">
@@ -34,11 +34,6 @@ export function ApproachInfographic({ steps, className = "" }: Props) {
               }}
             />
             <div className="relative mb-5 flex items-center gap-3">
-              <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-brand text-white shadow-soft ring-4 ring-brand-wash">
-                <span className="font-sans text-xl font-semibold leading-none">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-brand">
                 Step {String(i + 1).padStart(2, "0")}
               </span>
@@ -50,7 +45,7 @@ export function ApproachInfographic({ steps, className = "" }: Props) {
             {i < steps.length - 1 ? (
               <span
                 aria-hidden
-                className="absolute right-4 top-8 hidden text-lg text-brand/50 xl:block"
+                className="absolute right-4 top-6 hidden text-lg text-brand/50 xl:block"
               >
                 →
               </span>

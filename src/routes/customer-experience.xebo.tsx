@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroAsset from "@/assets/client-2026/xebo-unified-customer-view.jpg.asset.json";
-const heroImg = heroAsset.url;
+const heroImg = "/partners/xebo/dashboard.jpeg";
+const productLogo = "/partners/xebo/logo.png";
+import { ProductLogo } from "@/components/ProductLogo";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LeadMagnet } from "@/components/LeadMagnet";
@@ -246,12 +247,7 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="section-kicker text-brand-tint">
-                Xebo · Customer Experience
-              </span>
-              <span className="h-px w-10 bg-brand-tint/40" />
-            </div>
+            <ProductLogo src={productLogo} alt="Xebo" label="Customer Experience" />
             <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
               Transform customer engagement with{" "}
               <span className="italic text-brand-tint">intelligent</span> CX management software.
@@ -286,7 +282,6 @@ function Hero() {
                 height={1080}
                 className="w-full h-auto"
               />
-              <div className="absolute inset-0 bg-ink/30" />
             </div>
           </div>
         </div>
