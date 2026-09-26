@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import futureLogo from "@/assets/future-logo.png.asset.json";
+import futureLogo from "@/assets/future-logo-white.png.asset.json";
 import { SocialIcons } from "@/components/SocialIcons";
 
 const SOLUTION_LINKS = [
