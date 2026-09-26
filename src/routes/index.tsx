@@ -616,7 +616,7 @@ function CTA() {
             height={900}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/68 to-ink/30" />
           <div className="relative px-8 md:px-16 py-12 md:py-16 max-w-3xl">
             <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand-tint">
               Partner with FCC

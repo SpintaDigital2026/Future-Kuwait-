@@ -235,9 +235,9 @@
   color: #FFFFFF !important;
 }
 /* The gradient overlay itself must stay dark in the purple theme. */
-.theme-v2 .from-ink\/95 { --tw-gradient-from: rgb(22 13 36 / 0.95) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
-.theme-v2 .via-ink\/80 { --tw-gradient-via: rgb(22 13 36 / 0.8) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
-.theme-v2 .to-ink\/40 { --tw-gradient-to: rgb(22 13 36 / 0.4) !important; }
+.theme-v2 .from-ink\/85 { --tw-gradient-from: rgb(22 13 36 / 0.85) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
+.theme-v2 .via-ink\/68 { --tw-gradient-via: rgb(22 13 36 / 0.68) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, rgb(22 13 36 / 0)) !important; }
+.theme-v2 .to-ink\/30 { --tw-gradient-to: rgb(22 13 36 / 0.3) !important; }
 
 /* Pale purple panels and controls. */
 .theme-v2 .bg-brand-wash {

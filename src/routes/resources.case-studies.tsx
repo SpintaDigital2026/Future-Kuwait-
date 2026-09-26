@@ -1,7 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
 import { listPublishedCaseStudies } from "@/lib/case-studies.functions";
+import { featuredCaseStudy } from "@/lib/featured-case-study";
 import caseStudyAsset from "@/assets/client-2026/homepage-hero-02.jpg.asset.json";
 
 export const Route = createFileRoute("/resources/case-studies")({
@@ -17,11 +20,18 @@ export const Route = createFileRoute("/resources/case-studies")({
 });
 
 function CaseStudiesPage() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isDetail = pathname.startsWith("/resources/case-studies/");
   const list = useServerFn(listPublishedCaseStudies);
   const { data, isLoading } = useQuery({ queryKey: ["public", "case-studies"], queryFn: () => list() });
-  const items = data ?? [];
+  const published = (data ?? []).filter((cs) => cs.slug !== featuredCaseStudy.slug);
+  const items = [featuredCaseStudy, ...published];
+
+  if (isDetail) return <Outlet />;
 
   return (
+    <div>
+    <SiteNav />
     <div className="mx-auto max-w-7xl px-4 py-14 lg:px-6">
       <header className="grid items-center gap-8 overflow-hidden rounded-2xl bg-brand-wash p-7 md:grid-cols-2 md:p-10">
         <div><h1 className="text-4xl font-bold tracking-tight">Case Studies</h1>
@@ -30,11 +40,8 @@ function CaseStudiesPage() {
       </header>
 
       <div className="mt-12">
-        {isLoading && <p className="text-sm text-ink-soft">Loading…</p>}
-        {!isLoading && items.length === 0 && (
-          <p className="rounded-md border border-dashed p-8 text-center text-sm text-ink-soft">
-            Case studies are coming soon. Check back shortly.
-          </p>
+        {isLoading && published.length === 0 && items.length === 0 && (
+          <p className="text-sm text-ink-soft">Loading…</p>
         )}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((cs) => (
@@ -65,6 +72,8 @@ function CaseStudiesPage() {
           ))}
         </div>
       </div>
+    </div>
+    <SiteFooter />
     </div>
   );
 }
