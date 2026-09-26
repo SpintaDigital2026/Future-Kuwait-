@@ -41,17 +41,20 @@ function EventsPage() {
   const past = items.filter((e) => new Date(e.end_at ?? e.start_at).getTime() < now).reverse();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-14 lg:px-6">
-      <header className="grid items-center gap-8 overflow-hidden rounded-2xl bg-brand-wash p-7 md:grid-cols-2 md:p-10">
-        <div><h1 className="text-4xl font-bold tracking-tight">Events & Webinars</h1>
-        <p className="mt-4 text-lg text-ink-soft">Upcoming and on-demand events, webinars and roundtables.</p></div>
-        <img src={eventsAsset.url} alt="FCC events and webinars" className="aspect-[16/9] w-full rounded-xl object-cover" />
-      </header>
-
-      <div className="mt-12 space-y-16">
-        <Section title="Upcoming" items={upcoming} loading={isLoading} emptyMsg="No upcoming events scheduled. Check back soon." />
-        {past.length > 0 && <Section title="Past events" items={past} loading={false} emptyMsg="" />}
-      </div>
+    <div>
+      <iframe
+        src="https://www.eventbrite.co.uk/"
+        title="Eventbrite events"
+        className="block h-screen w-full border-0 bg-white"
+      />
+      {(upcoming.length > 0 || past.length > 0) && (
+        <div className="mx-auto max-w-7xl space-y-16 px-4 py-14 lg:px-6">
+          {!isLoading && upcoming.length > 0 && (
+            <Section title="FCC events" items={upcoming} loading={false} emptyMsg="" />
+          )}
+          {past.length > 0 && <Section title="Past events" items={past} loading={false} emptyMsg="" />}
+        </div>
+      )}
     </div>
   );
 }
