@@ -8,6 +8,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { SectionCta } from "@/components/SectionCta";
 import { ApproachInfographic } from "@/components/ApproachInfographic";
+import { OutcomeInfographic } from "@/components/OutcomeInfographic";
+import { IndustryInfographic } from "@/components/IndustryInfographic";
 
 export const Route = createFileRoute("/microsoft/power-bi")({
   head: () => ({
@@ -245,13 +247,13 @@ function Hero() {
             <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
+                className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert <span aria-hidden>→</span>
               </a>
               <a
                 href="/resources/case-studies"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft hover:bg-brand-wash/80 transition-colors whitespace-nowrap"
+                className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
               >
                 Download a case study
               </a>
@@ -339,7 +341,7 @@ function Approach() {
         <h2 className="font-sans text-3xl md:text-4xl font-semibold text-ink tracking-tight max-w-3xl">
           A strategic approach to <span className="italic text-brand">BI transformation</span>.
         </h2>
-        <ApproachInfographic className="mt-14" steps={APPROACH} />
+        <ApproachInfographic className="mt-14" layout="ribbon" steps={APPROACH} />
       </div>
     </section>
   );
@@ -392,14 +394,7 @@ function Industries() {
         <h2 className="font-sans text-3xl md:text-4xl font-semibold tracking-tight max-w-3xl">
           Analytics transformation across <span className="italic text-brand-tint">every sector</span>.
         </h2>
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {INDUSTRIES.map((ind) => (
-            <div key={ind.name} className="rounded-2xl border border-white/10 bg-white/5 p-7 hover:bg-white/10 transition-colors">
-              <h3 className="font-sans text-lg font-semibold">{ind.name}</h3>
-              <p className="mt-3 text-white/70 text-sm leading-relaxed">{ind.body}</p>
-            </div>
-          ))}
-        </div>
+        <IndustryInfographic className="mt-14" layout="path" items={INDUSTRIES.map((ind) => ({ title: ind.name, body: ind.body }))} />
       </div>
     </section>
   );
@@ -446,13 +441,7 @@ function Outcomes() {
         <h2 className="font-sans text-3xl md:text-4xl font-semibold text-ink tracking-tight max-w-3xl">
           Measurable results from <span className="italic text-brand">intelligent analytics</span>.
         </h2>
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {OUTCOMES.map((outcome) => (
-            <div key={outcome} className="rounded-2xl bg-white border border-ink/10 p-7 flex items-start gap-4">
-              <span className="text-ink font-medium">{outcome}</span>
-            </div>
-          ))}
-        </div>
+                <OutcomeInfographic className="mt-14" layout="columns" items={OUTCOMES} />
       </div>
     </section>
   );
@@ -473,13 +462,13 @@ function CTA() {
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <a
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
+            className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
           >
             Speak to an Expert <span aria-hidden>→</span>
           </a>
           <a
             href="/resources/case-studies"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft hover:bg-brand-wash/80 transition-colors whitespace-nowrap"
+            className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
           >
             Download a case study
           </a>

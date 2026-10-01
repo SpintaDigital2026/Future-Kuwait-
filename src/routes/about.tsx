@@ -8,6 +8,8 @@ import { SiteNav } from "@/components/SiteNav";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { SectionCta } from "@/components/SectionCta";
 import { ApproachInfographic } from "@/components/ApproachInfographic";
+import { OutcomeInfographic } from "@/components/OutcomeInfographic";
+import { IndustryInfographic } from "@/components/IndustryInfographic";
 import { SocialIcons } from "@/components/SocialIcons";
 
 export const Route = createFileRoute("/about")({
@@ -230,7 +232,7 @@ function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
+                className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert
                 <span aria-hidden>→</span>
@@ -445,7 +447,7 @@ function ApproachSection() {
             scalable digital transformation frameworks aligned with operational and growth objectives.
           </p>
         </div>
-        <ApproachInfographic steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
+        <ApproachInfographic layout="spine" steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
       </div>
     </section>
   );
@@ -503,17 +505,7 @@ function Industries() {
             <span className="italic text-brand-tint">key industries</span>.
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {INDUSTRIES.map((ind, i) => (
-            <div
-              key={ind.t}
-              className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 hover:bg-white/[0.07] transition-colors"
-            >
-              <h3 className="font-sans text-2xl mb-3 text-white">{ind.t}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{ind.d}</p>
-            </div>
-          ))}
-        </div>
+        <IndustryInfographic className="mt-14" layout="feature" items={INDUSTRIES.map((ind) => ({ title: ind.t, body: ind.d }))} />
       </div>
     </section>
   );
@@ -523,30 +515,19 @@ function Outcomes() {
   return (
     <section className="bg-brand-wash border-y border-hairline">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-14">
-        <div className="grid lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-5">
-            <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
-              Business Outcomes
-            </span>
-            <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
-              Delivering{" "}
-              <span className="italic text-brand">measurable business value</span>.
-            </h2>
-            <p className="mt-6 text-ink-soft leading-relaxed">
-              Organisations partnering with FCC can achieve:
-            </p>
-          </div>
-          <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {OUTCOMES.map((o, i) => (
-              <li
-                key={o}
-                className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline"
-              >
-                <span className="text-ink font-medium">{o}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="max-w-3xl">
+          <span className="font-mono text-sm md:text-base uppercase tracking-[0.2em] text-brand">
+            Business Outcomes
+          </span>
+          <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            Delivering{" "}
+            <span className="italic text-brand">measurable business value</span>.
+          </h2>
+          <p className="mt-6 text-ink-soft leading-relaxed">
+            Organisations partnering with FCC can achieve:
+          </p>
         </div>
+        <OutcomeInfographic className="mt-10" layout="columns" items={OUTCOMES} />
       </div>
     </section>
   );
@@ -579,7 +560,7 @@ function CTA() {
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors whitespace-nowrap"
+              className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white whitespace-nowrap"
             >
               Speak to an Expert
               <span aria-hidden>→</span>

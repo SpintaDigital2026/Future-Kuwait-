@@ -84,14 +84,14 @@ function DetailPage() {
         <div className="mt-14 flex flex-wrap gap-3">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors"
+            className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white"
           >
             Speak to an Expert
             <span aria-hidden>→</span>
           </a>
           <Link
             to="/resources/case-studies"
-            className="inline-flex items-center rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand"
+            className="btn-case inline-flex items-center rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand"
           >
             More case studies
           </Link>

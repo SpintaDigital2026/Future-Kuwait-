@@ -35,14 +35,14 @@ export function SectionCta({
           <div className="flex flex-wrap gap-3 shrink-0">
             <a
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
+              className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
             >
               Speak to an Expert
               <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="/resources/case-studies"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand whitespace-nowrap transition-colors border border-brand/10 shadow-soft hover:bg-brand-wash/80"
+              className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand whitespace-nowrap border border-brand/10 shadow-soft"
             >
               Download a case study
             </a>

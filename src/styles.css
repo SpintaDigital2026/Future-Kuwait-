@@ -282,4 +282,61 @@
   border-radius: 999px;
 }
 
+/* Pill CTAs keep their fill. Hover is lift, glow, a light sweep, and the arrow. */
+.btn-expert,
+.btn-case {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease;
+}
+.btn-expert::before,
+.btn-case::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 66%
+  );
+  transform: translateX(-140%);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-expert:hover::before,
+.btn-case:hover::before,
+.btn-expert:focus-visible::before,
+.btn-case:focus-visible::before {
+  transform: translateX(140%);
+}
+.btn-expert:hover,
+.btn-expert:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px color-mix(in oklab, var(--brand) 46%, transparent);
+}
+.btn-case:hover,
+.btn-case:focus-visible {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 26px color-mix(in oklab, var(--brand) 22%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--brand) 40%, transparent);
+}
+.btn-expert:active,
+.btn-case:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-expert span[aria-hidden] {
+  display: inline-block;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-expert:hover span[aria-hidden],
+.btn-expert:focus-visible span[aria-hidden] {
+  transform: translateX(6px);
+}
+
 

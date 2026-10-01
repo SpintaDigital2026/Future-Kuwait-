@@ -20,6 +20,8 @@ import { LeadMagnet } from "@/components/LeadMagnet";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 import { SectionCta } from "@/components/SectionCta";
 import { ApproachInfographic } from "@/components/ApproachInfographic";
+import { OutcomeInfographic } from "@/components/OutcomeInfographic";
+import { IndustryInfographic } from "@/components/IndustryInfographic";
 import { SocialIcons } from "@/components/SocialIcons";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -182,14 +184,14 @@ function CtaBand({
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
               href="/contact"
-              className={`group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium whitespace-nowrap transition-colors ${isDark ? "bg-white text-ink hover:bg-brand-wash" : "bg-brand text-white hover:bg-brand-deep shadow-soft"}`}
+              className={`btn-expert group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium whitespace-nowrap ${isDark ? "bg-white text-ink" : "bg-brand text-white shadow-soft"}`}
             >
               Speak to an Expert
               <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="/resources/case-studies"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand whitespace-nowrap transition-colors border border-brand/10 shadow-soft hover:bg-brand-wash/80"
+              className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand whitespace-nowrap border border-brand/10 shadow-soft"
             >
               Download a case study
             </a>
@@ -294,14 +296,14 @@ function Hero() {
             >
               <a
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white hover:bg-brand-deep transition-colors shadow-soft whitespace-nowrap"
+                className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
               >
                 Speak to an Expert
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="/resources/case-studies"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft hover:bg-brand-wash/80 transition-colors whitespace-nowrap"
+                className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
               >
                 Download a case study
               </a>
@@ -537,17 +539,7 @@ function Industries() {
             <span className="italic text-brand-tint">we serve</span>.
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {INDUSTRIES.map((ind, i) => (
-            <div
-              key={ind.t}
-              className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur p-6 hover:bg-white/[0.07] transition-colors"
-            >
-              <h3 className="font-sans text-2xl mb-3 text-white">{ind.t}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{ind.d}</p>
-            </div>
-          ))}
-        </div>
+        <IndustryInfographic className="mt-14" layout="strip" items={INDUSTRIES.map((ind) => ({ title: ind.t, body: ind.d }))} />
       </div>
     </section>
   );
@@ -565,7 +557,7 @@ function Approach() {
           <span className="italic text-brand">discovery to optimisation</span>.
         </h2>
       </div>
-      <ApproachInfographic steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
+      <ApproachInfographic layout="ribbon" steps={APPROACH.map((a) => ({ title: a.t, body: a.d }))} />
     </section>
   );
 }
@@ -574,27 +566,15 @@ function Outcomes() {
   return (
     <section className="bg-brand-wash border-y border-hairline">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10">
-        <div className="grid lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-5">
-            <span className="section-kicker text-brand">
-              Outcomes
-            </span>
-            <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
-              Measurable <span className="italic text-brand">business impact</span>.
-            </h2>
-          </div>
-          <StaggerGroup className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {OUTCOMES.map((o, i) => (
-              <StaggerItem
-                key={o}
-                as="li"
-                className="flex items-start gap-4 rounded-xl bg-background p-5 border border-hairline hover:border-brand/40 hover:-translate-y-0.5 transition-all"
-              >
-                <span className="text-ink font-medium">{o}</span>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+        <div className="max-w-3xl">
+          <span className="section-kicker text-brand">
+            Outcomes
+          </span>
+          <h2 className="mt-6 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            Measurable <span className="italic text-brand">business impact</span>.
+          </h2>
         </div>
+        <OutcomeInfographic className="mt-10" layout="mosaic" items={OUTCOMES} />
       </div>
     </section>
   );
@@ -629,14 +609,14 @@ function CTA() {
             <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink hover:bg-brand-wash transition-colors whitespace-nowrap"
+                className="btn-expert inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink whitespace-nowrap"
               >
                 Speak to an Expert
                 <span aria-hidden>→</span>
               </a>
               <a
                 href="/resources/case-studies"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft hover:bg-brand-wash/80 transition-colors whitespace-nowrap"
+                className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
               >
                 Download a case study
               </a>
