@@ -284,7 +284,8 @@
 
 /* Pill CTAs keep their fill. Hover is lift, glow, a light sweep, and the arrow. */
 .btn-expert,
-.btn-case {
+.btn-case,
+.btn-line {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -293,7 +294,8 @@
     box-shadow 0.32s ease;
 }
 .btn-expert::before,
-.btn-case::before {
+.btn-case::before,
+.btn-line::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -310,24 +312,24 @@
 }
 .btn-expert:hover::before,
 .btn-case:hover::before,
+.btn-line:hover::before,
 .btn-expert:focus-visible::before,
-.btn-case:focus-visible::before {
+.btn-case:focus-visible::before,
+.btn-line:focus-visible::before {
   transform: translateX(140%);
 }
 .btn-expert:hover,
-.btn-expert:focus-visible {
+.btn-expert:focus-visible,
+.btn-case:hover,
+.btn-case:focus-visible,
+.btn-line:hover,
+.btn-line:focus-visible {
   transform: translateY(-3px);
   box-shadow: 0 14px 32px color-mix(in oklab, var(--brand) 46%, transparent);
 }
-.btn-case:hover,
-.btn-case:focus-visible {
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 26px color-mix(in oklab, var(--brand) 22%, transparent),
-    0 0 0 1px color-mix(in oklab, var(--brand) 40%, transparent);
-}
 .btn-expert:active,
-.btn-case:active {
+.btn-case:active,
+.btn-line:active {
   transform: translateY(0) scale(0.98);
 }
 .btn-expert span[aria-hidden] {
@@ -337,6 +339,52 @@
 .btn-expert:hover span[aria-hidden],
 .btn-expert:focus-visible span[aria-hidden] {
   transform: translateX(6px);
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (max-width: 1023px) {
+  main,
+  section,
+  section .grid,
+  section .grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  h1,
+  h2,
+  h3,
+  p,
+  li {
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .section-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+  .mx-auto.max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .btn-expert,
+  .btn-case,
+  .btn-line {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 

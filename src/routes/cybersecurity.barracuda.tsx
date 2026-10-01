@@ -250,16 +250,16 @@ function Hero() {
           maskImage: "radial-gradient(ellipse at top, black 40%, transparent 80%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
+        <div className="grid min-w-0 max-w-full lg:grid-cols-12 gap-12 items-center">
+          <div className="min-w-0 max-w-full lg:col-span-6">
             <ProductLogo
               src={productLogo}
               alt="Barracuda"
               label="Cybersecurity"
-              imgClassName="h-16 max-w-[18rem] -translate-y-[25%]"
+              imgClassName="h-12 max-w-full -translate-y-[18%] sm:h-16 sm:max-w-[18rem] sm:-translate-y-[25%]"
             />
-            <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
+            <h1 className="max-w-full font-sans text-[1.7rem] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.12] break-words">
               Protect business communication with{" "}
               <span className="italic text-brand-tint">intelligent</span> email security solutions.
             </h1>
@@ -267,29 +267,29 @@ function Hero() {
               Barracuda email security helps organisations secure business communication, protect cloud
               environments, and strengthen operational resilience against phishing, ransomware, and evolving cyber threats.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex w-full min-w-0 flex-col gap-3 lg:flex-row lg:flex-wrap">
               <a
                 href="/contact"
-                className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
+                className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft"
               >
                 Speak to an Expert <span aria-hidden>→</span>
               </a>
               <a
                 href="/resources/case-studies"
-                className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
+                className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft"
               >
                 Download a case study
               </a>
             </div>
           </div>
-          <div className="lg:col-span-6">
+          <div className="min-w-0 max-w-full lg:col-span-6">
             <div className="relative rounded-2xl overflow-hidden border border-white/10">
               <img
                 src={heroImg}
                 alt="Barracuda email security dashboard"
                 width={1600}
                 height={900}
-                className="w-full h-auto"
+                className="block w-full max-w-full h-auto"
               />
             </div>
           </div>
@@ -543,16 +543,16 @@ function CTA() {
           Strengthen operational resilience through scalable Barracuda email security services UK and
           enterprise-grade communication security frameworks.
         </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-10 flex w-full min-w-0 flex-col items-stretch gap-3 lg:flex-row lg:flex-wrap lg:justify-center">
           <a
             href="/contact"
-            className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
+            className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft"
           >
             Speak to an Expert <span aria-hidden>→</span>
           </a>
           <a
             href="/resources/case-studies"
-            className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft whitespace-nowrap"
+            className="btn-case inline-flex items-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/10 shadow-soft"
           >
             Download a case study
           </a>

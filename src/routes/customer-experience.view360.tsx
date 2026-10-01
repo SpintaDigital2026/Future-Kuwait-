@@ -246,11 +246,11 @@ function Hero() {
           maskImage: "radial-gradient(ellipse at top, black 40%, transparent 80%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <ProductLogo src={productLogo} alt="View360" label="Customer Experience" plate />
-            <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
+            <h1 className="font-sans text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
               Transform customer engagement with an{" "}
               <span className="italic text-brand-tint">intelligent</span> customer 360 view platform.
             </h1>

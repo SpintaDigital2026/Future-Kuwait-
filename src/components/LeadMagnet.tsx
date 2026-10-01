@@ -37,8 +37,8 @@ export function LeadMagnet({
           />
           <div className="relative grid min-w-0 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="min-w-0 lg:col-span-7">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-tint">
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-brand-tint sm:tracking-[0.25em]">
                   {eyebrow}
                 </span>
                 <span className="h-px w-10 shrink-0 bg-brand-tint/40" />

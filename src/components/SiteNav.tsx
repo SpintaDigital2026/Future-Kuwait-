@@ -385,7 +385,7 @@ export function SiteNav() {
             />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               aria-label="Email"
@@ -428,7 +428,7 @@ export function SiteNav() {
           </div>
 
           <div
-            className={`absolute left-0 right-0 top-full border border-border bg-white p-4 shadow-[0_24px_70px_-30px_rgba(10,26,51,0.35)] ring-1 ring-border md:hidden ${
+            className={`absolute left-0 right-0 top-full z-50 max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain border border-border bg-white p-4 shadow-[0_24px_70px_-30px_rgba(10,26,51,0.35)] ring-1 ring-border md:hidden ${
               mobileOpen ? "block" : "hidden"
             }`}
           >

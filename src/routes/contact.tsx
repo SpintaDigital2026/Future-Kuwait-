@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { CalendarDays, CheckCircle2, MessageSquareText, Phone } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import heroAsset from "@/assets/client-2026/contact-speak-to-an-expert.jpg.asset.json";
 import futureLogo from "@/assets/future-logo.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
@@ -72,48 +72,10 @@ function ContactPage() {
   return (
     <div className="theme-v2 bg-background text-ink">
       <SiteNav />
-      <Hero onPick={selectChannel} />
+      <Hero channel={channel} onPick={selectChannel} />
       <section id="connect" className="relative bg-[linear-gradient(180deg,#f7f9fc_0%,#ffffff_48%)] py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="max-w-2xl">
-            <span className="section-kicker text-brand">How can we help?</span>
-            <h2 className="mt-5 font-sans text-4xl md:text-5xl leading-[1.05] tracking-tight">
-              Choose the easiest way to{" "}
-              <span className="italic text-brand">start a conversation</span>.
-            </h2>
-            <p className="mt-5 text-lg text-ink-soft leading-relaxed">
-              Write to us, pick a call time, or chat on WhatsApp. We will come back with a clear next step.
-            </p>
-          </div>
-
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
-            <ChannelCard
-              active={channel === "message"}
-              onClick={() => selectChannel("message")}
-              icon={<MessageSquareText className="h-6 w-6" />}
-              title="Leave a message"
-              body="Tell us what you need. We will reply to your email."
-              action="Write a note"
-            />
-            <ChannelCard
-              active={channel === "booking"}
-              onClick={() => selectChannel("booking")}
-              icon={<CalendarDays className="h-6 w-6" />}
-              title="Book a call"
-              body="Choose a day and time that works. We will hold the slot."
-              action="Pick a time"
-            />
-            <ChannelCard
-              active={channel === "whatsapp"}
-              onClick={() => selectChannel("whatsapp")}
-              icon={<Phone className="h-6 w-6" />}
-              title="Chat on WhatsApp"
-              body="Message the team and get a faster reply."
-              action="Start a chat"
-            />
-          </div>
-
-          <div className="mt-10 overflow-hidden rounded-[28px] border border-hairline bg-white shadow-elevated">
+          <div className="overflow-hidden rounded-[28px] border border-hairline bg-white shadow-elevated">
             <div className="h-1.5 bg-gradient-to-r from-brand via-brand-tint to-brand-deep" />
             <div className="p-6 sm:p-8 md:p-12">
               {channel === "message" && <MessageForm />}
@@ -128,53 +90,7 @@ function ContactPage() {
   );
 }
 
-function ChannelCard({
-  active,
-  onClick,
-  icon,
-  title,
-  body,
-  action,
-}: {
-  active: boolean;
-  onClick: () => void;
-  icon: ReactNode;
-  title: string;
-  body: string;
-  action: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`group relative text-left rounded-3xl border p-7 transition-all duration-300 ${
-        active
-          ? "border-brand bg-white shadow-elevated -translate-y-1 ring-4 ring-brand/10"
-          : "border-hairline bg-white/70 hover:-translate-y-1 hover:border-brand/25 hover:shadow-soft"
-      }`}
-    >
-      {active && (
-        <span className="absolute right-5 top-5 inline-flex size-7 items-center justify-center rounded-full bg-brand text-white">
-          <CheckCircle2 className="h-4 w-4" />
-        </span>
-      )}
-      <div
-        className={`inline-flex size-14 items-center justify-center rounded-2xl transition-colors ${
-          active ? "bg-brand text-white" : "bg-brand-wash text-brand group-hover:bg-brand group-hover:text-white"
-        }`}
-      >
-        {icon}
-      </div>
-      <div className="mt-6 font-sans text-2xl tracking-tight">{title}</div>
-      <p className="mt-2 text-sm text-ink-soft leading-relaxed">{body}</p>
-      <span className={`mt-5 inline-flex text-sm font-medium ${active ? "text-brand" : "text-ink-soft group-hover:text-brand"}`}>
-        {action} →
-      </span>
-    </button>
-  );
-}
-
-function Hero({ onPick }: { onPick: (channel: Channel) => void }) {
+function Hero({ channel, onPick }: { channel: Channel; onPick: (channel: Channel) => void }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white">
       <div
@@ -186,14 +102,14 @@ function Hero({ onPick }: { onPick: (channel: Channel) => void }) {
           filter: "blur(20px)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-24">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-8">
               <span className="section-kicker text-brand-tint">Speak to an expert</span>
               <span className="h-px w-10 bg-brand-tint/40" />
             </div>
-            <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+            <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
               Let’s talk about your{" "}
               <span className="italic text-brand-tint">next step</span>.
             </h1>
@@ -201,25 +117,25 @@ function Hero({ onPick }: { onPick: (channel: Channel) => void }) {
               Share a short brief, book a call, or message us on WhatsApp. An FCC specialist will
               help you from there.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex w-full min-w-0 flex-col gap-3 lg:flex-row lg:flex-wrap">
               <button
                 type="button"
                 onClick={() => onPick("message")}
-                className="rounded-full bg-brand px-6 py-3 text-sm font-medium hover:bg-brand-deep transition-colors"
+                className={`btn-expert inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft ${channel === "message" ? "ring-2 ring-white" : ""}`}
               >
                 Leave a message
               </button>
               <button
                 type="button"
                 onClick={() => onPick("booking")}
-                className="rounded-full bg-white text-ink px-6 py-3 text-sm font-medium hover:bg-brand-wash transition-colors"
+                className={`btn-case inline-flex items-center justify-center gap-2 rounded-full bg-brand-wash px-6 py-3 text-sm font-medium text-brand border border-brand/15 shadow-soft ${channel === "booking" ? "ring-2 ring-brand-tint" : ""}`}
               >
                 Book a call
               </button>
               <button
                 type="button"
                 onClick={() => onPick("whatsapp")}
-                className="rounded-full border border-white/20 px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors"
+                className={`btn-line inline-flex items-center justify-center gap-2 rounded-full border border-brand-tint bg-brand/40 px-6 py-3 text-sm font-medium text-white ${channel === "whatsapp" ? "ring-2 ring-white" : ""}`}
               >
                 WhatsApp us
               </button>
@@ -251,7 +167,7 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
 }
 
 const fieldClass =
-  "w-full rounded-2xl border border-hairline bg-muted/40 px-4 py-3.5 text-sm text-ink outline-none transition-colors focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-2xl border border-hairline bg-muted/40 px-4 py-3.5 text-base text-ink outline-none transition-colors focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20";
 
 function MessageForm() {
   const submit = useServerFn(submitContactEnquiry);
@@ -330,7 +246,7 @@ function MessageForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-white hover:bg-brand-deep transition-colors disabled:opacity-60"
+          className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-white shadow-soft disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Send message"}
           <span aria-hidden>→</span>
@@ -488,7 +404,7 @@ function BookingForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-white hover:bg-brand-deep transition-colors disabled:opacity-60"
+          className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-white shadow-soft disabled:opacity-60"
         >
           {status === "sending" ? "Booking…" : "Confirm this time"}
           <span aria-hidden>→</span>
@@ -575,14 +491,14 @@ function WhatsAppPanel() {
         <div className="md:col-span-2 flex flex-wrap items-center gap-3">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-full bg-[#128C7E] px-7 py-3.5 text-sm font-medium text-white hover:bg-[#0e6e63] transition-colors"
+            className="btn-expert inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-white shadow-soft"
           >
             Send to WhatsApp
             <span aria-hidden>→</span>
           </button>
           <a
             href={telUrl()}
-            className="inline-flex items-center gap-2 rounded-full border border-hairline px-7 py-3.5 text-sm font-medium hover:bg-muted transition-colors"
+            className="btn-case inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand-wash px-7 py-3.5 text-sm font-medium text-brand shadow-soft"
           >
             Call us instead
           </a>

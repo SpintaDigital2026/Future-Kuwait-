@@ -208,7 +208,7 @@ function Hero() {
           maskImage: "radial-gradient(ellipse at top, black 40%, transparent 80%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-8">
@@ -220,7 +220,7 @@ function Hero() {
                 Est. 1996
               </span>
             </div>
-            <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-white">
+            <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-white">
               Empowering businesses through{" "}
               <span className="italic text-brand-tint">intelligent</span> technology solutions.
             </h1>
@@ -239,7 +239,7 @@ function Hero() {
               </a>
               <a
                 href="/#solutions"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors whitespace-nowrap"
+                className="btn-line inline-flex items-center gap-2 rounded-full border border-brand-tint bg-brand/40 px-6 py-3 text-sm font-medium text-white whitespace-nowrap"
               >
                 Explore Our Solutions
               </a>
@@ -567,7 +567,7 @@ function CTA() {
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-colors whitespace-nowrap"
+              className="btn-line inline-flex items-center gap-2 rounded-full border border-brand-tint bg-brand/40 px-6 py-3 text-sm font-medium text-white whitespace-nowrap"
             >
               Contact Our Team
             </a>

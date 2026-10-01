@@ -252,7 +252,7 @@ function Hero() {
           maskImage: "radial-gradient(ellipse at top, black 40%, transparent 80%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <motion.div
@@ -273,7 +273,7 @@ function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
-              className="font-sans text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-white"
+              className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-white"
             >
               Engineering{" "}
               <span className="italic text-brand-tint">intelligent</span> digital transformation.
@@ -308,15 +308,15 @@ function Hero() {
                 Download a case study
               </a>
             </motion.div>
-            <StaggerGroup className="mt-14 grid grid-cols-3 gap-6 max-w-lg">
+            <StaggerGroup className="mt-10 grid grid-cols-3 gap-3 max-w-lg sm:mt-14 sm:gap-6">
               {[
                 ["30+", "Years experience"],
                 ["UK", "Nationwide reach"],
                 ["100%", "Outcome-driven"],
               ].map(([n, l]) => (
-                <StaggerItem key={l} className="border-l-2 border-brand-tint pl-4">
-                  <div className="font-sans text-3xl text-white">{n}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 mt-1">{l}</div>
+                <StaggerItem key={l} className="border-l-2 border-brand-tint pl-3 sm:pl-4">
+                  <div className="font-sans text-2xl text-white sm:text-3xl">{n}</div>
+                  <div className="mt-1 font-mono text-[9px] uppercase leading-tight tracking-[0.08em] text-white/50 sm:text-[10px] sm:tracking-[0.2em]">{l}</div>
                 </StaggerItem>
               ))}
             </StaggerGroup>
@@ -343,7 +343,7 @@ function Hero() {
                 className="w-full h-auto object-cover aspect-[4/3]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 sm:bottom-5 sm:left-5 sm:right-5">
                 <div className="rounded-xl bg-ink/85 backdrop-blur px-4 py-3 ring-1 ring-white/10">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/60">Trusted Microsoft</div>
                   <div className="font-sans text-sm text-white">Cloud Solution Provider</div>
