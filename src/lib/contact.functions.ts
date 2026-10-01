@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { CONTACT_EMAIL } from "./contact";
+import { bookingCalendarLinks, bookingIcs, CONTACT_EMAIL } from "./contact";
 
 function publicClient() {
   return createClient<Database>(
@@ -30,10 +30,16 @@ const enquirySchema = z.object({
   preferred_time: z.string().optional(),
 });
 
-async function notifyInbox(subject: string, text: string) {
+async function notifyInbox(
+  subject: string,
+  text: string,
+  ics?: string,
+  to = process.env.CONTACT_INBOX_EMAIL || CONTACT_EMAIL,
+  replyTo?: string,
+  fromName?: string,
+) {
   const key = process.env.RESEND_API_KEY;
-  if (!key) return false;
-  const to = process.env.CONTACT_INBOX_EMAIL || CONTACT_EMAIL;
+  if (!key) return { ok: false as const, error: "Email sending is not configured." };
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -41,13 +47,34 @@ async function notifyInbox(subject: string, text: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "FCC Website <noreply@fcc.uk>",
+      from: fromName ? `${fromName} <onboarding@resend.dev>` : process.env.CONTACT_FROM_EMAIL || "FCC <onboarding@resend.dev>",
       to: [to],
+      reply_to: replyTo,
       subject,
       text,
+      attachments: ics
+        ? [
+            {
+              filename: "invite.ics",
+              content: Buffer.from(ics).toString("base64"),
+              content_type: "text/calendar; charset=utf-8; method=REQUEST",
+            },
+          ]
+        : undefined,
     }),
   });
-  return res.ok;
+  if (!res.ok) {
+    const body = await res.text();
+    let error = body.slice(0, 280);
+    try {
+      const parsed = JSON.parse(body) as { message?: string };
+      if (parsed.message) error = parsed.message;
+    } catch {
+      /* keep the raw text */
+    }
+    return { ok: false as const, error };
+  }
+  return { ok: true as const, error: "" };
 }
 
 export const submitContactEnquiry = createServerFn({ method: "POST" })
@@ -86,26 +113,60 @@ export const submitContactEnquiry = createServerFn({ method: "POST" })
       throw new Error(error.message);
     }
 
-    const subject =
-      data.kind === "booking"
-        ? `New call booking: ${data.name} · ${data.preferred_date} ${data.preferred_time}`
-        : `New website message from ${data.name}`;
-    const text = [
-      `Kind: ${data.kind}`,
-      `Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Company: ${data.company || "—"}`,
-      `Topic: ${data.topic || "—"}`,
-      data.kind === "booking" ? `Slot: ${data.preferred_date} ${data.preferred_time} UK` : null,
-      "",
-      data.message,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const booking =
+      data.kind === "booking" && data.preferred_date && data.preferred_time
+        ? {
+            name: data.name,
+            email: data.email,
+            date: data.preferred_date,
+            time: data.preferred_time,
+            topic: data.message,
+          }
+        : null;
+    const links = booking ? bookingCalendarLinks(booking) : null;
+    const ics = booking ? bookingIcs(booking) : undefined;
+    const subject = booking
+      ? `Call booking from ${data.name}`
+      : `New website message from ${data.name}`;
+    const text = booking
+      ? [
+          data.message,
+          "",
+          `From: ${data.name} <${data.email}>`,
+          `When: ${booking.date} at ${booking.time} UK`,
+          "",
+          `Add this call to the calendar: ${links?.google}`,
+        ].join("\n")
+      : [
+          data.message,
+          "",
+          `From: ${data.name} <${data.email}>`,
+          `Company: ${data.company || "—"}`,
+          `Topic: ${data.topic || "—"}`,
+        ].join("\n");
 
-    await notifyInbox(subject, text).catch(() => false);
+    const inbox = CONTACT_EMAIL;
+    const sent = await notifyInbox(subject, text, ics, inbox, data.email, data.name).catch((err: unknown) => ({
+      ok: false as const,
+      error: err instanceof Error ? err.message : "Email failed",
+    }));
+    if (!sent.ok) {
+      const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
+      if (key) {
+        const admin = createClient<Database>(process.env.SUPABASE_URL!, key, {
+          auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+        });
+        const removal = admin.from("contact_enquiries").delete().eq("kind", data.kind).eq("email", data.email);
+        if (booking) {
+          await removal.eq("preferred_date", booking.date).eq("preferred_time", booking.time);
+        } else {
+          await removal.eq("message", data.message);
+        }
+      }
+      throw new Error(sent.error || `The message could not be emailed to ${inbox}.`);
+    }
 
-    return { ok: true as const, inbox: CONTACT_EMAIL };
+    return { ok: true as const, inbox, emailed: sent.ok, subject, text };
   });
 
 export const listBookedSlots = createServerFn({ method: "GET" }).handler(async () => {

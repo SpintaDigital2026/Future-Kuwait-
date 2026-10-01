@@ -7,11 +7,9 @@ import futureLogo from "@/assets/future-logo.png.asset.json";
 import { SiteNav } from "@/components/SiteNav";
 import { SocialIcons } from "@/components/SocialIcons";
 import {
+  BOOKING_EMAIL,
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
-  bookingIcs,
-  downloadIcs,
-  mailTo,
   telUrl,
   whatsappUrl,
 } from "@/lib/contact";
@@ -180,7 +178,7 @@ function MessageForm() {
     setStatus("sending");
     setError("");
     try {
-      await submit({
+      const result = await submit({
         data: {
           kind: "message",
           name: String(data.get("name") || ""),
@@ -190,18 +188,13 @@ function MessageForm() {
           message: String(data.get("message") || ""),
         },
       });
+      if (!result.emailed) {
+        throw new Error(`The message could not be emailed to ${CONTACT_EMAIL}.`);
+      }
       setStatus("sent");
     } catch (err) {
-      window.location.href = mailTo(
-        `Website message from ${String(data.get("name") || "")}`,
-        `Name: ${String(data.get("name") || "")}\nEmail: ${String(data.get("email") || "")}\nCompany: ${String(data.get("company") || "")}\nTopic: ${String(data.get("interest") || "")}\n\n${String(data.get("message") || "")}`,
-      );
       setStatus("error");
-      setError(
-        err instanceof Error
-          ? `${err.message} Your email app has been opened to send this to ${CONTACT_EMAIL}.`
-          : `Could not save the message. Your email app has been opened for ${CONTACT_EMAIL}.`,
-      );
+      setError(err instanceof Error ? err.message : `Could not email this message to ${CONTACT_EMAIL}.`);
     }
   }
 
@@ -209,7 +202,7 @@ function MessageForm() {
     return (
       <Thanks
         title="Thanks — we have your message"
-        text={`The team will reply to the email you entered. You can also reach us at ${CONTACT_EMAIL}.`}
+        text={`Your message was emailed to ${CONTACT_EMAIL}. Replies go to the address you entered.`}
       />
     );
   }
@@ -218,7 +211,7 @@ function MessageForm() {
     <form onSubmit={onSubmit} className="grid gap-5 md:grid-cols-2">
       <div className="md:col-span-2">
         <h3 className="font-sans text-2xl md:text-3xl tracking-tight">Leave a message</h3>
-        <p className="mt-2 text-ink-soft">A few details are enough. We will get back to you shortly.</p>
+        <p className="mt-2 text-ink-soft">A few details are enough. Your message is emailed to {CONTACT_EMAIL}.</p>
       </div>
       <Field label="Your name">
         <input name="name" required className={fieldClass} placeholder="Jane Smith" />
@@ -251,7 +244,7 @@ function MessageForm() {
           {status === "sending" ? "Sending…" : "Send message"}
           <span aria-hidden>→</span>
         </button>
-        <p className="text-sm text-ink-soft">We reply from {CONTACT_EMAIL}</p>
+        <p className="text-sm text-ink-soft">Sent to {CONTACT_EMAIL}</p>
       </div>
     </form>
   );
@@ -266,7 +259,7 @@ function BookingForm() {
   const [selectedTime, setSelectedTime] = useState("10:00");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
-  const [summary, setSummary] = useState<{ date: string; time: string } | null>(null);
+  const [summary, setSummary] = useState<{ date: string; time: string; emailed: boolean } | null>(null);
 
   useEffect(() => {
     listSlots().then(setBooked).catch(() => setBooked([]));
@@ -289,31 +282,16 @@ function BookingForm() {
     setStatus("sending");
     setError("");
     try {
-      await submit({ data: payload });
-      downloadIcs(
-        `fcc-call-${payload.preferred_date}.ics`,
-        bookingIcs({
-          name: payload.name,
-          email: payload.email,
-          date: payload.preferred_date,
-          time: payload.preferred_time,
-          topic: payload.message,
-        }),
-      );
-      setSummary({ date: payload.preferred_date, time: payload.preferred_time });
+      const result = await submit({ data: payload });
+      if (!result.emailed) {
+        throw new Error(`The invitation could not be emailed to ${BOOKING_EMAIL}.`);
+      }
+      setSummary({ date: payload.preferred_date, time: payload.preferred_time, emailed: true });
       setBooked((prev) => [...prev, { date: payload.preferred_date, time: payload.preferred_time }]);
       setStatus("sent");
     } catch (err) {
-      window.location.href = mailTo(
-        `Meeting request from ${payload.name}`,
-        `Name: ${payload.name}\nEmail: ${payload.email}\nPreferred date: ${payload.preferred_date}\nPreferred time: ${payload.preferred_time} UK\n\n${payload.message}`,
-      );
       setStatus("error");
-      setError(
-        err instanceof Error
-          ? `${err.message} Your email app has been opened to send this booking to ${CONTACT_EMAIL}.`
-          : `Could not reserve the slot yet. Your email app has been opened for ${CONTACT_EMAIL}.`,
-      );
+      setError(err instanceof Error ? err.message : `Could not email this booking to ${BOOKING_EMAIL}.`);
     }
   }
 
@@ -326,7 +304,7 @@ function BookingForm() {
     return (
       <Thanks
         title="Your call is booked"
-        text={`${label} at ${summary.time} UK is reserved. A calendar invite has downloaded for you.`}
+        text={`${label} at ${summary.time} UK is reserved. ${BOOKING_EMAIL} has the email from the address you entered. Accept in that email adds the call to the calendar.`}
       />
     );
   }
@@ -335,7 +313,9 @@ function BookingForm() {
     <form onSubmit={onSubmit} className="grid gap-5 md:grid-cols-2">
       <div className="md:col-span-2">
         <h3 className="font-sans text-2xl md:text-3xl tracking-tight">Book a call</h3>
-        <p className="mt-2 text-ink-soft">Pick a weekday and a time. Taken slots are shown as booked.</p>
+        <p className="mt-2 text-ink-soft">
+          Pick a weekday and a time. Confirming emails {BOOKING_EMAIL} from the address you enter, with an Accept button to book the calendar.
+        </p>
       </div>
       <Field label="Your name">
         <input name="name" required className={fieldClass} placeholder="Jane Smith" />

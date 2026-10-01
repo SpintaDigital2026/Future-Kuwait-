@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
+
 type Props = {
   eyebrow?: string;
   title: string;
@@ -51,7 +53,7 @@ export function LeadMagnet({
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
-                  href={`mailto:inquiry@fcc-solutions.co.uk?subject=${mailSubject}`}
+                  href={`mailto:${CONTACT_EMAIL}?subject=${mailSubject}`}
                   className="btn-expert group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft whitespace-nowrap"
                 >
                   {ctaLabel}
